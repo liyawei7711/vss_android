@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navigate_container"
+    android:layout_width="match_parent"
+    android:layout_height="83dp"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="3dp"
+        android:drawableTop="@drawable/yuyin"
+        android:gravity="center_horizontal"
+        android:text="@string/talk_diaodu_txt"
+        android:textColor="@color/selector_contact_menu_textcolor"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_video"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="3dp"
+        android:drawableTop="@drawable/shipin"
+        android:gravity="center_horizontal"
+        android:text="@string/video_diaodu_txt"
+        android:textColor="@color/selector_contact_menu_textcolor"
+        android:textSize="12sp" />
+
+
+    <TextView
+        android:id="@+id/tv_channel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="3dp"
+        android:drawableTop="@drawable/xiangqing"
+        android:gravity="center_horizontal"
+        android:text="@string/channel_detail"
+        android:textColor="@color/selector_contact_menu_textcolor"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_meet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="3dp"
+        android:drawableTop="@drawable/huiyi"
+        android:gravity="center_horizontal"
+        android:text="@string/meet_diaodu_txt"
+        android:textColor="@color/selector_contact_menu_textcolor"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_watch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="3dp"
+        android:drawableTop="@drawable/shipinchakan"
+        android:gravity="center_horizontal"
+        android:text="@string/video_watch_txt"
+        android:textColor="@color/selector_contact_menu_textcolor"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_zhihui"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawablePadding="3dp"
+        android:drawableTop="@drawable/zhiling"
+        android:gravity="center_horizontal"
+        android:text="@string/zhiling_diaodu_txt"
+        android:textColor="@color/selector_contact_menu_textcolor"
+        android:textSize="12sp" />
+
+
+</LinearLayout>

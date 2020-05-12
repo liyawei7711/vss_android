@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp">
+
+        <TextView
+            android:id="@+id/rbtn_group"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:button="@null"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black333"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/rbtn_person"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="70dp"
+            android:layout_toLeftOf="@id/rbtn_group"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/conference_title_left"
+            android:textColor="@color/text539bf0"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/rbtn_device"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="70dp"
+            android:layout_toRightOf="@id/rbtn_group"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/conference_title_right"
+            android:textColor="@color/black333"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/back_gray" />
+
+
+        <View
+            android:id="@+id/view_float"
+            android:layout_width="wrap_content"
+            android:layout_height="3dp"
+            android:layout_alignLeft="@id/rbtn_person"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@id/rbtn_person"
+            android:background="@color/text539bf0" />
+    </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rct_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" />
+
+            <ImageView
+                android:id="@+id/iv_empty_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/img_empty_contacts"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

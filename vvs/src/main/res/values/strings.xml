@@ -1,0 +1,668 @@
+<resources>
+    <string name="app_name">可视指挥</string>
+    <string name="notification_running_background_text">可视指挥正在运行</string>
+
+    <!-- 公共 -->
+    <string name="confirm">确认</string>
+    <string name="makesure">确定</string>
+    <string name="notice">提醒</string>
+    <string name="cancel">取消</string>
+    <string name="reqing">正在请求...</string>
+    <string name="reqsuccess">请求成功...</string>
+    <string name="dealsuccess">操作成功...</string>
+    <string name="error">出错啦~</string>
+    <string name="upload">上传失败</string>
+
+    <!--状态-->
+    <string name="has_connected">已连接</string>
+    <string name="has_connecting">正在连接</string>
+    <string name="has_connected_false">已断连</string>
+    <string name="has_server_connecting">服务器正在重新连接</string>
+    <string name="has_connected_false_out">请检查网络连接是否正常，并重新登录</string>
+
+    <!--视频状态-->
+    <string name="video_biaoqing">标清</string>
+    <string name="video_gaoqing">高清</string>
+    <string name="video_chaoqing">超清</string>
+    <string name="capture_cha">较差 采集:</string>
+    <string name="capture_yiban">一般 采集:</string>
+    <string name="capture_lianghao">良好 采集:</string>
+
+
+    <!--权限-->
+    <string name="has_power_float">你还没有悬浮框权限，请开启</string>
+    <string name="has_power_no">存在不被允许的权限，可能会影响部分功能的使用</string>
+
+    <!--登录页-->
+    <string name="auth_hint_account">请输入用户名</string>
+    <string name="login_err">登录失败，请检查账户和网络信息</string>
+    <string name="hint_auth_password">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="login_name_empty">用户名不能为空</string>
+    <string name="login_password_empty">密码不能为空</string>
+    <string name="login_error">登录失败！用户名或者密码错误！</string>
+    <string name="login_fail">登录超时,请稍后重试！</string>
+
+    <!--设置ip页-->
+    <string name="activity_input_url_address_hint">请输入服务器地址</string>
+    <string name="activity_input_url_path_hint">请输入服务器端口</string>
+    <string name="activity_input_url_address_empty">请输入正确的服务器地址</string>
+    <string name="activity_input_url_path_empty">请输入正确的端口号</string>
+    <string name="setip_by_scan">扫码设置IP</string>
+    <string name="scan_error">扫描失败，请重试</string>
+    <string name="qr_code_error">二维码内容不正确，请重试</string>
+
+
+    <!--创建密码-->
+    <string name="activity_create_pw_hint">请输入密码</string>
+    <string name="activity_create_pw_again_hint">请再次输入密码</string>
+    <string name="activity_create_confirm_pw">创建密码</string>
+    <string name="activity_create_confirm_again_pw">确认密码</string>
+    <string name="activity_create_tip">请输入密码</string>
+    <string name="activity_create_tip_equal">两次密码不一样，请重新输入</string>
+    <string name="activity_create_update_error">密码更新失败</string>
+
+    <!-- 首页 -->
+    <string name="title_notification">通知</string>
+    <string name="title_conference">会议调度</string>
+    <string name="title_contacts">联系人</string>
+    <string name="title_setting">设置</string>
+
+    <!--通知页-->
+    <string name="fragment_notice_invite_type_title">会议调度邀请</string>
+    <string name="fragment_notice_invite_watch_type_title">观摩邀请</string>
+    <string name="fragment_notice_kickout_type_title">请出会议调度</string>
+    <string name="fragment_notice_description" formatted="false">邀请您参加</string>
+    <string name="fragment_notice_description_watch" formatted="false">邀请您观摩</string>
+    <string name="title_conference_notification">会议调度通知</string>
+
+    <!--设置页-->
+    <string name="fragment_setting_disturb">电话免打扰</string>
+    <string name="fragment_setting_about">关于</string>
+    <string name="fragment_setting_clear_cache">清除缓存</string>
+    <string name="fragment_setting_clear_notification">（清除所有通知消息）</string>
+    <string name="fragment_setting_logout">退出登录</string>
+
+    <!--关于-->
+    <string name="about">关于</string>
+    <string name="activity_about_update">版本更新</string>
+    <string name="activity_about_already_new">已是最新版本</string>
+    <string name="activity_about_has_new">有新版本请检查更新</string>
+
+    <!--会议-->
+    <string name="meet_not_exit">会议调度不存在</string>
+    <string name="meet_max_num">会议调度达到最大人数</string>
+    <string name="white_board_not_exist">会议没有白板分享</string>
+    <string name="white_board_has_exist">重复开启白板</string>
+    <string name="white_board_not_opener">不是白板分享发起者</string>
+    <string name="white_board_exist">会议已存在白板分享</string>
+    <string name="white_board_start">开启白板失败</string>
+    <string name="create_meet_err">创建会议失败</string>
+    <string name="raise_hands_err">举手失败</string>
+    <string name="joine_err">加入会议失败</string>
+    <string name="send_nofity">发送邀请失败</string>
+    <string name="start_play_err">视频记录不存在</string>
+
+    <string name="delete_meet_err">删除会议失败</string>
+    <string name="update_meet_err">修改会议失败</string>
+    <string name="invite_user_err">邀请失败</string>
+    <string name="cancel_invite_user_err">取消邀请失败</string>
+    <string name="get_meet_info_err">获取会议信息失败</string>
+    <string name="quite_talk_err">退出对讲失败</string>
+    <string name="kitout_err">请出参会者失败</string>
+    <string name="change_video_err">变换布局信息失败</string>
+    <string name="getlayout_info_err">获取布局信息失败</string>
+    <string name="jinyan_close_err">禁言失败</string>
+    <string name="jinyan_open_err">解禁失败</string>
+    <string name="start_talk_err">开启对讲失败</string>
+    <string name="join_talk_err">加入对讲失败</string>
+    <string name="create_group_err">创建群组失败</string>
+    <string name="get_err">获取失败</string>
+    <string name="delete_err">删除失败</string>
+    <string name="quite_err">退出失败</string>
+    <string name="update_err">修改失败</string>
+    <string name="add_err">添加失败</string>
+    <string name="open_white_board">进入白板失败</string>
+    <string name="close_white_board">退出白板失败</string>
+    <string name="update_white_board">更新白板失败</string>
+    <string name="switch_meet_layout">更换布局失败</string>
+    <string name="start_record">开启录像失败</string>
+
+    <string name="unline">本次会议调度已结束</string>
+    <string name="out_of_conference">您已经被请出会议调度</string>
+    <string name="conference_title_left">人员</string>
+    <string name="conference_title_right">摄像头</string>
+    <string name="conference_title_middle">频道</string>
+    <!--对讲-->
+    <string name="channel_change_size">切换集群频道(%d)</string>
+    <string name="channel_detail">频道详情</string>
+    <string name="channel_detail_all_user">所有成员</string>
+    <string name="channel_detail_channel_name">频道名称: %s</string>
+    <string name="channel_detail_channel_id">频道ID: %s</string>
+    <string name="channel_detail_channel_max_duration">单次说话最大时长: %d秒</string>
+
+    <!--引导-->
+    <string name="experience_right_now">立即体验</string>
+
+
+    <!--升级提示关 -->
+    <string name="update_title_force">版本升级</string>
+    <string name="update_title_choose">版本升级</string>
+    <string name="update_sd_card_not_ready">下载失败，请确认SD卡是否可用</string>
+    <string name="update_download_error">下载失败</string>
+    <string name="update_download_percent">已下载 %1$s</string>
+    <string name="update_download">已下载</string>
+    <string name="update_download_waite">等待中</string>
+    <string name="update_download_latest_version">当前已是最新版本</string>
+    <string name="update_checking">正在检查&#8230;</string>
+    <string name="update_download_not_wifi_tip">当前为非WIFI网络，是否下载？</string>
+    <string name="update_plugin_progress">正在下载 %1$s/%2$s</string>
+    <string name="network_invalide">网络连接出现问题，请检查网络</string>
+    <string name="no_data">暂无数据</string>
+    <string name="network_timeout">网络不稳定，请稍后再试</string>
+    <string name="network_error_common">系统错误</string>
+    <string name="conference_finished">会话已结束</string>
+
+    <!--聊天信息-->
+    <string name="chat_info_title">聊天信息</string>
+    <string name="create_conference">创建会议调度</string>
+    <string name="video_chat">视频对讲</string>
+    <string name="clear_chat_record">清除聊天记录</string>
+    <string name="capture">采集</string>
+    <string name="player">播放</string>
+    <string name="player_faile">查看失败，对方无响应</string>
+    <string name="capture_stop">关闭采集</string>
+    <string name="load_kitout">登录踢出</string>
+    <string name="other_load">你在另一台设备上登录</string>
+    <string name="meet_kitout">会议踢出</string>
+    <string name="meet_kitout_ed">你被踢出了会议[%1$s]</string>
+    <string name="invisitor">对讲邀请</string>
+    <string name="talk_invistor_miss">您未接听%1$s于%2$s的来电</string>
+    <string name="meet_invistor_miss">您未参加%1$s于%2$s召开的会议调度</string>
+    <string name="meet_invistor_attend">%1$s预约您于%2$s参加的会议调度取消</string>
+    <string name="zuotian">昨天</string>
+    <string name="qiantian">前天</string>
+    <string name="hour">时</string>
+    <string name="minute">分</string>
+    <string name="second">秒</string>
+    <string name="time_long">时长:</string>
+    <string name="city_map">城市列表</string>
+    <string name="zhixiashi">直辖市或特别行政区</string>
+    <string name="off_map">离线地图下载</string>
+    <string name="pause">暂停</string>
+    <string name="cont">继续</string>
+    <string name="map_size">地图大小:%1$s</string>
+    <string name="area_search">按地区查询</string>
+    <string name="download">下载中</string>
+    <string name="download_title">下载</string>
+    <string name="max_download">同时最多下载三个</string>
+    <string name="start_false">开始失败</string>
+    <string name="pause_false">暂停失败</string>
+    <string name="pre_load">准备下载</string>
+    <string name="map_delete_false">删除失败</string>
+    <string name="map_update_no">暂无更新</string>
+    <string name="gps_open">请打开GPS</string>
+    <string name="reload_msg">该账号已经在线，是否强制登录？</string>
+    <string name="new_version">更新新版本</string>
+    <string name="download_success">下载成功</string>
+    <string name="download_false">下载失败</string>
+    <string name="no_net">当前无网络</string>
+    <string name="kitout_load">你已被踢出登录</string>
+    <string name="chang_pwd">修改密码</string>
+    <string name="old_pwd">请输入原密码</string>
+    <string name="new_pwd">请输入新密码</string>
+    <string name="new_pwd_re">请再次输入密码</string>
+    <string name="old_pwd_empty">原密码不能为空</string>
+    <string name="new_pwd_empty">新密码不能为空</string>
+    <string name="new_pwd_re_empty">重复新密码不能为空</string>
+    <string name="pwd_diff">两次新密码不一致</string>
+    <string name="pwd_has_changed">密码已修改</string>
+    <string name="req_false">请求失败</string>
+    <string name="is_loading">正在登录</string>
+    <string name="is_loading_file">正在加载</string>
+    <string name="count_pwd_empty">账户或密码不能为空</string>
+    <string name="double_click_exit">再按一次退出应用程序</string>
+    <string name="new_setting">联网设置</string>
+    <string name="save_change">保存</string>
+    <string name="ip_address_empty">IP / Port 不能为空</string>
+    <string name="input_right_txt">请输入正确的IP地址</string>
+    <string name="pore_right_txt">Port 为四位数字</string>
+    <string name="img">图片</string>
+    <string name="audio">音频</string>
+    <string name="person_share">人员分享</string>
+    <string name="person_share_from">来自%s的人员分享</string>
+    <string name="person_share_device_from">来自%s的设备分享</string>
+    <string name="device_share">设备分享</string>
+    <string name="zhiling_diaodu">的指令调度</string>
+    <string name="zhiling_diaodu_title">指令调度</string>
+    <string name="zhiling_diaodu_temporary_group">临时指令调度组</string>
+
+
+    <string name="is_delete_this_msg">是否删除这条消息?</string>
+    <string name="search">搜索</string>
+    <string name="person_msg">人员</string>
+    <string name="group_msg">群组</string>
+    <string name="content_msg">内容</string>
+    <string name="device_name">摄像头</string>
+    <string name="online">在线</string>
+    <string name="offline_other">对方不在线</string>
+    <string name="offline">不在线</string>
+    <string name="empty_kongxian">空闲</string>
+    <string name="capture_ing">采集中</string>
+    <string name="talk_ing">对讲中</string>
+    <string name="meet_ing">会议中</string>
+    <string name="trunk_speak_ing">集群对讲中</string>
+    <string name="offline_1">(不在线)</string>
+    <string name="empty_kongxian_1">(空闲)</string>
+    <string name="capture_ing_1">(采集中...)</string>
+    <string name="talk_ing_1">(对讲中...)</string>
+    <string name="meet_ing_1">(会议中...)</string>
+    <string name="trunk_speak_ing_1">(集群对讲中...)</string>
+    <string name="device_empty">设备为空</string>
+    <string name="get_device_empty">获取设备失败</string>
+    <string name="player_success">播放成功</string>
+    <string name="device_item">设备:</string>
+    <string name="market_item">标记:</string>
+    <string name="domain_item">域标记(点击无效):</string>
+    <string name="person_item">人员:</string>
+    <string name="load_quick">努力加载地址中</string>
+    <string name="load_distance">努力获取距离中</string>
+    <string name="time_ref_location">前更新位置</string>
+    <string name="get_person_false">获取用户失败</string>
+    <string name="get_device_false">获取设备失败</string>
+    <string name="get_group_false">获取群组信息出错</string>
+    <string name="get_group_empty">该群组暂无用户</string>
+    <string name="sos_false">求助失败</string>
+    <string name="me_talk_ing">我正在说话</string>
+    <string name="person_talk_ing">正在说话</string>
+    <string name="kitout_group">你被踢出对讲组</string>
+    <string name="group_delete">对讲组被删除</string>
+    <string name="player_stop_success">停止播放成功</string>
+    <string name="invisitor_title">邀请</string>
+    <string name="group_invisitor_notice">邀请你参加集群对讲，是否接受？</string>
+    <string name="group_empty">当前无对讲组</string>
+    <string name="join_deal">加入 </string>
+    <string name="join_success"> 成功</string>
+    <string name="join_false">加入失败</string>
+    <string name="qiangmai_false">抢麦失败</string>
+    <string name="open_power_false">开启权限失败</string>
+    <string name="start_capture_false">开启采集失败</string>
+    <string name="time_out">超时</string>
+    <string name="now_is_kongxian">当前空闲</string>
+    <string name="jieping_success">截屏成功</string>
+    <string name="local_size_max">存储空间达到阈值</string>
+    <string name="stop_capture_success">采集结束</string>
+    <string name="capture_success">采集成功</string>
+    <string name="capture_false">采集失败</string>
+    <string name="other_diaodu">当前存在其他调度，是否关闭?</string>
+    <string name="other_wait_accept">当前存在其他等待接听的调度，是否关闭?</string>
+    <string name="video_watch_success">视频查看成功</string>
+    <string name="video_watch_false">视频查看失败</string>
+    <string name="duifang_close">对方已关闭</string>
+    <string name="jinmai">禁麦</string>
+    <string name="jiejinmai">解禁</string>
+    <string name="duifang_refuse_talk_video">对方拒绝视频调度邀请</string>
+    <string name="duifang_no_xiangying">对方不响应</string>
+    <string name="qiehuan_meet_video_false">切换失败</string>
+    <string name="duifang_offline">对方不在线</string>
+    <string name="duifang_exite_talk_video">对方退出了视频调度</string>
+    <string name="duifang_has_no_add">未加入视频调度</string>
+    <string name="duifang_has_end">对讲已结束</string>
+    <string name="is_exite_video_diaodu">是否退出本次视频调度?</string>
+    <string name="is_accept_meet_diaodu">邀请你参加会议调度，是否接受？</string>
+    <string name="video">视频</string>
+    <string name="talk">语音</string>
+    <string name="invisitor_you">邀请您</string>
+    <string name="qiehuandao">要切换到</string>
+    <string name="diaodu_shifou">调度嘛？</string>
+    <string name="weijiaru_talk_diaodu">未加入语音调度</string>
+    <string name="talk_has_end">对讲已结束</string>
+    <string name="is_exite_talk_diaodu">是否退出本次语音调度?</string>
+    <string name="waite_accept_notice">等待对方接受邀请...</string>
+    <string name="linshi_meet">临时会议</string>
+    <string name="diaodu_has_end">调度已结束</string>
+    <string name="meet_diaodu_has_end">会议调度已结束</string>
+    <string name="waite_duifang_accept_this_diaodu">等待对方接受邀请...</string>
+    <string name="waite_you_attend_meet">邀请你参加会议...</string>
+    <string name="meet">会议</string>
+    <string name="waite_you_video_diaodu">邀请你视频通话...</string>
+    <string name="waite_you_talk_diaodu">邀请你语音对讲...</string>
+    <string name="has_txt">有</string>
+    <string name="num_dian">个点</string>
+    <string name="notice_title">通知</string>
+    <string name="setting">设置</string>
+    <string name="delete_all_msg">您确定清除所有的消息吗?</string>
+    <string name="has_delete_all_msg">已清空通知消息</string>
+    <string name="is_upload_ing">正在上传</string>
+    <string name="upload_success">上传成功</string>
+    <string name="file_upload_false">文件上传失败</string>
+    <string name="upload_false">上传失败</string>
+    <string name="upload_file_too_big">文件过大</string>
+    <string name="all_is_new_version">当前是最新版本</string>
+    <string name="version_new_title">系统最新版本</string>
+    <string name="update_at_once">立刻更新</string>
+    <string name="not_support_upload_img">当前版本不支持图片上传</string>
+    <string name="edit">编辑</string>
+    <string name="selected_all">全选</string>
+    <string name="selected_all_not">全不选</string>
+    <string name="video_is_upload">视频正在上传</string>
+    <string name="img_is_upload">图片正在上传</string>
+    <string name="selected_need_upload_file">请选择上传的文件</string>
+    <string name="upload_num_is">上传第</string>
+    <string name="is_error">个出错</string>
+    <string name="current_progress">正在上传,上传进度</string>
+    <string name="player_complete">播放完成</string>
+    <string name="user_not_attended">该用户未参会，不能选择</string>
+    <string name="change_user_empty">交换人员不能为空</string>
+    <string name="change_local_empty">交换位置不能为空</string>
+    <string name="change_is_success">交换成功,请稍后</string>
+    <string name="local_no_user">该位置没有人哦~</string>
+    <string name="quanti_jinyan">全体禁言成功</string>
+    <string name="jinyan_success">禁言成功</string>
+    <string name="kitout_success">踢出成功</string>
+    <string name="invisitor_success">邀请成功</string>
+    <string name="invisitor_you_meet_diaodu">邀请你参加会议调度</string>
+    <string name="invisitor_you_video_diaodu">邀请你参加视频调度</string>
+    <string name="invisitor_you_talk_diaodu">邀请你参加语音调度</string>
+    <string name="weiruhui">未入会</string>
+    <string name="yiruhui">已入会</string>
+    <string name="yishangqiang">已上墙</string>
+    <string name="weishangqiang">未上墙</string>
+    <string name="selected_share_file">请选择要分享的文件</string>
+    <string name="selected_share_img">请选择要分享的图片</string>
+    <string name="canhuiren_list">参会人</string>
+    <string name="meet_diaodu_name">请输入会议调度名称</string>
+    <string name="quanliao_name">请输入群聊名称</string>
+    <string name="meet_diaodu_title">会议调度名称</string>
+    <string name="video_close">关闭视频</string>
+    <string name="hand_up_success">举手成功</string>
+    <string name="video_open">开启视频</string>
+    <string name="share_file">共享文件</string>
+    <string name="share_img">共享图片</string>
+    <string name="file_is_bigger_than">文档大于50M</string>
+    <string name="meet_no_record">该会议无会议记录</string>
+    <string name="meet_diaodu_detail">会议调度详情</string>
+    <string name="whiteboard_open_success">白板已开启</string>
+    <string name="you_bei_kitout_meet">你被踢出会议调度</string>
+    <string name="you_leave_draw">你已离开画面</string>
+    <string name="you_join_draw">你已进入画面</string>
+    <string name="no_start_user">你不是共享发起人，无权操作</string>
+    <string name="no_xiangying">不响应</string>
+    <string name="refuse">拒绝</string>
+    <string name="has_handup">举手了</string>
+    <string name="local_share">本地共享</string>
+    <string name="white_board_close">关闭白板</string>
+    <string name="whit_board_open">开启白板</string>
+    <string name="is_jiesan_diaodu">解散或退出会议调度?</string>
+    <string name="is_exite_diaodu">是否退出本次会议调度?</string>
+    <string name="exite">退出</string>
+    <string name="jiesan">解散</string>
+    <string name="file_trans_false">文件转换失败</string>
+    <string name="has_invisitor_success">已邀请选中人员</string>
+    <string name="start_white_board">打开白板</string>
+    <string name="liuliang_notice">您当前属于4G/3G网络下，是否下载新的版本?</string>
+    <string name="find_new_version">发现了新版本</string>
+    <string name="new_version_has_complete">新版本已准备好，是否安装?</string>
+    <string name="year">年</string>
+    <string name="yue">月</string>
+    <string name="ri">日</string>
+    <string name="erweima_code">扫描二维码获取终端版本</string>
+    <string name="version_quan">南京怀业版权所有©2018</string>
+    <string name="sett_server">设置</string>
+    <string name="niming_ruhui">匿名入会</string>
+    <string name="old_pwd_txt">原密码</string>
+    <string name="new_pwd_txt">新密码</string>
+    <string name="marksure_pwd">确认密码</string>
+    <string name="simple_demo">输入样例：</string>
+    <string name="send">发送</string>
+    <string name="seach_with_emptyh"> 搜索</string>
+    <string name="has_no_data">暂无消息</string>
+    <string name="search_zhiding_content">搜索指定内容</string>
+    <string name="person_txt_content">人员</string>
+    <string name="group_txt_content">群组</string>
+    <string name="content_txt_content">内容</string>
+    <string name="tongxunlu">通讯录</string>
+    <string name="offline_map_txt">离线地图下载</string>
+    <string name="call_record">通话记录</string>
+    <string name="local_video_txt">本地录像</string>
+    <string name="notice_txt">通知消息</string>
+    <string name="setting_txt">设置</string>
+    <string name="show_mode">显示模式</string>
+    <string name="mode_hine">打开后主预览常显示地图</string>
+    <string name="is_local_record">是否本地录像</string>
+    <string name="is_show_weixing">是否展示卫星地图(公网生效)</string>
+    <string name="change_pwd_hint">修改密码</string>
+    <string name="sos_user">SOS紧急联系人</string>
+    <string name="one_key_up">一键上传日志</string>
+    <string name="capture_qingxidu">采集清晰度</string>
+    <string name="player_qingxi">播放清晰度</string>
+    <string name="capture_bianma">采集编码</string>
+    <string name="yingbianma">硬编</string>
+    <string name="ruanbianma">软编</string>
+    <string name="player_jiema">播放解码</string>
+    <string name="yingjiema">硬解</string>
+    <string name="ruanjiema">软解</string>
+    <string name="quhuisheng">去回声</string>
+    <string name="zidongzengyi">自动增益</string>
+    <string name="jiangzao">降噪</string>
+    <string name="chongcaiyang">重采样</string>
+    <string name="close_txt">关闭</string>
+    <string name="open_txt">打开</string>
+    <string name="talk_diaodu_txt">语音调度</string>
+    <string name="video_diaodu_txt">视频调度</string>
+    <string name="meet_diaodu_txt">会议调度</string>
+    <string name="video_watch_txt">视频查看</string>
+    <string name="zhiling_diaodu_txt">指令调度</string>
+    <string name="accept">接受</string>
+    <string name="dangqian_group">当前组: </string>
+    <string name="online_user_list">在线人员列表</string>
+    <string name="jingyin_txt">静音</string>
+    <string name="guaduan_hint">挂断</string>
+    <string name="local_video_list_txt">本地视频</string>
+    <string name="local_img_txt">本地图片</string>
+    <string name="delete">删除</string>
+    <string name="delete_confirm">&#160;&#160;&#160;&#160;&#160;&#160;删除后不可恢复,确认删除?</string>
+
+    <string name="upload_txt">上传</string>
+    <string name="zanwu_offline_map">暂无离线地图</string>
+    <string name="continue_txt">继续</string>
+    <string name="upload_hint_txt">更新</string>
+    <string name="download_apk_start">已开始下载,可在通知栏查看进度</string>
+    <string name="ent_meet_diaodu_txt">进入会议调度</string>
+    <string name="meet_diaodu_record_txt">会议调度录像</string>
+    <string name="yingguangbi_txt">荧光笔</string>
+    <string name="gangbi_txt">钢笔</string>
+    <string name="yanse_txt">颜色</string>
+    <string name="xiangpica_txt">橡皮擦</string>
+    <string name="qingchu_txt">清除</string>
+    <string name="attend_user_txt">参会者</string>
+    <string name="yijianjinyan_txt">一键禁言</string>
+    <string name="meet_diaodu_name_txt">会议调度名称</string>
+    <string name="record_save_txt">录像存储</string>
+    <string name="dengfen_layout_txt">等分布局</string>
+    <string name="big_samll_txt">大小布局</string>
+    <string name="no_find_usb_camera">没有发现外置摄像头</string>
+    <string name="share_img_txt">分享图片</string>
+    <string name="share_file_txt">分享文档</string>
+    <string name="jinyan_txt">禁言</string>
+    <string name="qiehuan_shexiangtou_txt">切换摄像头</string>
+    <string name="qiehuan_waizhi_txt">外置摄像头</string>
+    <string name="user_list_txt">人员列表</string>
+    <string name="hande_up_txt">举手</string>
+    <string name="layout_txt">布局</string>
+    <string name="start_record_txt">开始录像</string>
+    <string name="dangqiang_layout_txt">当前布局</string>
+    <string name="is_en_show">是否英文展示</string>
+    <string name="person_title">人员</string>
+    <string name="meet_join">加入会议调度</string>
+    <string name="meet_leave">离开会议调度</string>
+    <string name="only_audio">对方只采集语音</string>
+    <string name="map_load_error">内网情况下，百度地图无法下载。切换到外网，若迟迟不下载，可删除重下。</string>
+    <string name="duifang_exite_talk_talk_video">对方退出了语音调度</string>
+    <string name="ing_with">正在与</string>
+    <string name="ing_with_talk">通话</string>
+    <string name="duifang_refuse_talk_talk_video">对方拒绝语音调度邀请</string>
+    <string name="distance_me">距离我:</string>
+    <string name="distance_dan"> 米</string>
+    <string name="jingdu">经度：</string>
+    <string name="weidu">纬度：</string>
+    <string name="capture_drawer">采集画质</string>
+    <string name="capture_malv">采集码率</string>
+    <string name="captur_malv_low">低</string>
+    <string name="captur_malv_middle">中</string>
+    <string name="captur_malv_heigh">高</string>
+    <string name="captur_malv_customer">自定义</string>
+    <string name="net_auto">网络自适应</string>
+    <string name="use_encrypt">是否通讯加密</string>
+    <string name="use_encrypt_init">通讯加密初始化</string>
+    <string name="net_auto_start">开启</string>
+    <string name="net_auto_close">关闭</string>
+    <string name="canshu_setting">音视频参数设置</string>
+    <string name="map_setting">地图设置</string>
+    <string name="map_location_frequency">GPS定位上报频率</string>
+    <string name="anjian_setting">按键设置</string>
+    <string name="player_drawer">播放画质</string>
+    <string name="play_start_notice">组件未完成，请重试</string>
+    <string name="login_empty">用户不存在</string>
+    <string name="login_error_txt">密码错误</string>
+    <string name="now_is_talk">当前正在语音调度</string>
+    <string name="now_is_capture">当前正在采集</string>
+    <string name="now_is_play">当前正在播放</string>
+    <string name="now_is_meet">当前正在会议调度</string>
+    <string name="now_is_video">当前正在视频调度</string>
+    <string name="user_name">用户名</string>
+    <string name="user_pwd">密码</string>
+    <string name="user_more">当前人数太多，是否继续？</string>
+    <string name="receive">收到一条来自</string>
+    <string name="place_watch">消息, 请到消息页面查看~</string>
+    <string name="tran_model">传输方式</string>
+    <string name="cameraindex_notice">当前为前置摄像头，闪光灯不可用</string>
+    <string name="time_out_share">分享已过期</string>
+    <string name="no_this_user">无此用户</string>
+    <string name="old_pwd_error">原密码错误</string>
+    <string name="change_error">修改失败</string>
+
+    <string name="default_camera">默认摄像头</string>
+    <string name="camera_foreground">前置</string>
+    <string name="camera_back">后置</string>
+    <string name="guanmo_is_offline">观摩方已退出</string>
+    <string name="guanmo_is_stop">观摩方停止观摩</string>
+
+    <string name="guanmo_capture_is_offline">观摩采集方已退出</string>
+    <string name="guanmo_capture_is_stop">观摩采集方停止采集</string>
+    <!-- p2p -->
+    <string name="p2p_error_init">局域网初始化失败</string>
+    <string name="p2p_title">脱网模式</string>
+    <string name="p2p_change_now">立即进入</string>
+    <string name="p2p_disconnect_info">无法连接服务器,尝试%s次后进入脱网模式</string>
+    <string name="p2p_is_running_and_this_function_not_support">脱网模式不支持该功能</string>
+
+    <string name="notice_img">图片</string>
+    <string name="notice_file">文件</string>
+    <string name="notice_share">分享</string>
+
+    <string name="audio_start">语音调度从</string>
+    <string name="video_start">视频调度从</string>
+    <string name="meet_start">发起的</string>
+    <string name="to_start">发给</string>
+    <string name="no_this_column">该记录已删除</string>
+    <string name="is_start_meet">正在初始化会议</string>
+    <string name="chang_language">部分页面重启生效</string>
+
+    <string name="ptt_key">ptt按键</string>
+    <string name="sos_key">sos按键</string>
+    <string name="sos">一键求助</string>
+    <string name="sos_call">紧急呼叫</string>
+    <string name="camera_key">camera按键</string>
+    <string name="video_key">video按键</string>
+    <string name="ptt_channel_left">频道切换(左)</string>
+    <string name="ptt_channel_right">频道切换(右)</string>
+
+    <string name="start_ptt_key">单击设置ptt按键</string>
+    <string name="start_sos_key">单击设置sos按键</string>
+    <string name="start_camera_key">单击设置camera按键</string>
+    <string name="start_video_key">单击设置video按键</string>
+    <string name="start_ptt_left_key">单击设置ptt频道切换(左)按键</string>
+    <string name="start_ptt_right_key">单击设置ptt频道切换(右)按键</string>
+
+    <string name="meet_diaodu_ing">正在会议...</string>
+    <string name="video_diaodu_ing">正在视频...</string>
+    <string name="talk_diaodu_ing">正在语音...</string>
+    <string name="no_markets">没有任何标记点</string>
+    <string name="out_camera">无外置摄像头</string>
+
+
+    <!--离线地图-->
+    <string name="offline_current_map">当前展示区域地图</string>
+    <string name="offline_no_cityid">当前网络无法获取城市ID</string>
+    <string name="offline_current_city">当前</string>
+    <string name="no_adress_name">未获取到地址名称</string>
+    <string name="offline_map_downloaded">离线地图已下载</string>
+    <string name="offline_map_downloading">离线地图正在下载</string>
+    <string name="offline_map_star_downloading">离线地图开始下载</string>
+    <!-- 我的地图 -->
+    <string name="my_map">我的地图</string>
+    <string name="my_map_no_mark">没有发现标记</string>
+    <string name="my_map_delete_msg">是否删除所有标记</string>
+    <string name="my_map_delete_success">删除成功</string>
+    <string name="my_map_delete_error">删除失败</string>
+    <string name="delete_all_marker">确定删除选中的标记?</string>
+
+    <!-- 拓扑图 -->
+    <string name="topo">自组网设备拓扑图</string>
+    <string name="topo_empty">没有发现自组网设备</string>
+
+    <!--服务-->
+    <string name="service_in_operation">正在运行中...</string>
+
+    <!--通话记录-->
+    <string name="empty_call_record">清空通话记录</string>
+    <string name="immediate_accession">立即加入>></string>
+
+    <string name="delete_record">是否删除全部记录？</string>
+    <string name="convened_meeting">%s召开的会议(%s)</string>
+    <string name="close_talk">当前正在对讲，是否进入会议！</string>
+    <string name="broadcast_video">有新的视频广播，是否切换播放！</string>
+
+    <!-- 设置 -->
+    <string name="setting_more">更多设置</string>
+    <!-- 带宽检测 -->
+    <string name="bandwidth_detection">带宽检测</string>
+    <string name="bandwidth_CMD">命令</string>
+    <string name="bandwidth_start">开始检测</string>
+    <string name="bandwidth_stop">停止检测</string>
+    <string name="bandwidth_interval">时间间隔</string>
+    <string name="bandwidth_time">测试时长</string>
+    <string name="bandwidth_width">带宽</string>
+    <string name="bandwidth_server">服务器地址</string>
+    <string name="bandwidth_server_port">服务器端口</string>
+
+    <!-- 加密 -->
+    <string name="encrypt_setting">加密设置</string>
+    <string name="encrypt_init_error">加密初始化失败</string>
+    <string name="encrypt_change_psw">修改加密口令</string>
+    <string name="encrypt_update_secret_key">更新加密密钥</string>
+    <string name="encrypt_destory_local_secret_key">销毁本地加密密钥</string>
+    <string name="encrypt_change_psw_success">修改加密口令成功</string>
+    <string name="encrypt_change_psw_error">修改加密口令失败</string>
+    <string name="encrypt_update_secret_key_success">更新加密密钥成功</string>
+    <string name="encrypt_update_secret_key_error">更新加密密钥失败</string>
+    <string name="encrypt_card_psw">加密卡密码</string>
+    <string name="encrypt_card_psw_hint">请输入加密卡密码</string>
+    <string name="encrypt_card_uninit">反初始化成功</string>
+
+
+    <string name="play_audio_error">音频播放失败</string>
+
+    <string name="downloading">正在下载中...</string>
+    <string name="network_private">专网地址</string>
+    <string name="network_public">公网地址</string>
+
+    <!-- 聊天 -->
+    <string name="chat_download_success">文件下载成功</string>
+    <string name="chat_download_fail">下载失败</string>
+    <string name="chat_decrypt_fail">解密失败</string>
+    <string name="chat_encrypt_fail">加密失败</string>
+    <string name="chat_already_encrypt">文件已加密</string>
+
+</resources>

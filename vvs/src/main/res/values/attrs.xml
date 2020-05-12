@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AppRadioButton">
+
+        <attr name="unReadNumber" format="integer|reference"></attr>
+
+        <attr name="unReadBackColor" format="color|reference" />
+
+        <attr name="unReadTextColor" format="color|reference" />
+
+        <attr name="unReadTextSize" format="dimension|reference" />
+
+        <attr name="unReadCircleRadius" format="dimension|reference" />
+
+        <attr name="unReadCircleRightOffset" format="dimension|reference" />
+        <attr name="unReadCircleTopOffset" format="dimension|reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="FlowBaseLayout">
+
+        <attr name="maxLines" format="integer">
+            <enum name="nolimit" value="-1" />
+        </attr>
+        <attr name="maxColumns" format="integer">
+            <enum name="nolimit" value="-1" />
+        </attr>
+        <attr name="columnmargin" format="dimension"></attr>
+        <attr name="linemargin" format="dimension"></attr>
+        <attr name="tagHeight" format="dimension|reference"></attr>
+
+    </declare-styleable>
+
+
+</resources>

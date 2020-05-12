@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <item name="start_time" type="id"/>
+    <item name="end_time" type="id"/>
+
+    <item name="offline_bean" type="id"/>
+    <item name="offline_position" type="id"/>
+
+    <item name="offline_city_bean" type="id"/>
+    <item name="offline_city_position" type="id"/>
+
+
+    <item type="id" name="tag_bean"/>
+    <item type="id" name="tag_holder"/>
+    <item type="id" name="tag_position"/>
+
+</resources>

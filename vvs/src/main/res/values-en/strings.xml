@@ -1,0 +1,669 @@
+<resources>
+    <string name="app_name">emergency command </string>
+    <string name="notification_running_background_text"> emergency command is running </string>
+
+    <!-- 公共 -->
+    <string name="confirm">confirmation</string>
+    <string name="makesure">makesure</string>
+    <string name="notice">remind</string>
+    <string name="cancel">cancelling</string>
+    <string name="reqing">asking for...</string>
+    <string name="reqsuccess">request successful...</string>
+    <string name="dealsuccess">operation successful...</string>
+    <string name="error"> error ~</string>
+    <string name="upload"> upload failed </string>
+
+    <!--状态-->
+    <string name="has_connected">connected</string>
+    <string name="has_connecting">connecting</string>
+    <string name="has_connected_false">has been disconnected</string>
+    <string name="has_server_connecting"> server is reconnecting </string>
+    <string name="has_connected_false_out">please check that the network connection is normal and try login again </string>
+
+    <!--视频状态-->
+    <string name="video_biaoqing">vga</string>
+    <string name="video_gaoqing">hd</string>
+    <string name="video_chaoqing">super</string>
+    <string name="capture_cha"> poor collection :</string>
+    <string name="capture_yiban"> general collection :</string>
+    <string name="capture_lianghao"> good collection :</string>
+
+
+    <!--权限-->
+    <string name="has_power_float"> you don not have the hoverbox permission yet please open </string>
+    <string name="has_power_no"> has unauthorized permissions that may affect the use for some functions</string>
+
+
+    <!--登录页-->
+    <string name="auth_hint_account"> please enter username </string>
+    <string name="login_err"> failed to login. please check account and network information </string>
+    <string name="hint_auth_password"> please enter the password </string>
+    <string name="login">login load</string>
+    <string name="login_name_empty">the user name can not be empty</string>
+    <string name="login_password_empty">the password cannot be empty</string>
+    <string name="login_error">login failed!user name or password error!</string>
+    <string name="login_fail">login timeout, please try again later!</string>
+
+    <!--设置ip页-->
+    <string name="activity_input_url_address_hint">please enter the server address</string>
+    <string name="activity_input_url_path_hint">please enter the server port base</string>
+    <string name="activity_input_url_address_empty"> please enter the correct server address/string>
+please enter the correct port number and the correct port number</string>
+    <string name="activity_input_url_path_empty">please enter the correct port number</string>
+    <string name="setip_by_scan"> scan code setting ip</string>
+    <string name="scan_error"> scan failed, please try again</string>
+    <string name="qr_code_error"> qr code content is incorrect, please try again</string>
+
+    <!--创建密码-->
+    <string name="activity_create_pw_hint">please enter password</string>
+    <string name="activity_create_pw_again_hint">please enter the password again</string>
+    <string name="activity_create_confirm_pw">create password</string>
+    <string name="activity_create_confirm_again_pw">confirm password</string>
+    <string name="activity_create_tip"> please enter password </string>
+    <string name="activity_create_tip_equal"> password is different twice, please re-enter </string>
+    <string name="activity_create_update_error"> password update failed </string>
+
+    <!-- 首页 -->
+    <string name="title_notification">notice</string>
+    <string name="title_conference">meeting scheduling</string>
+    <string name="title_contacts">contact</string>
+    <string name="title_setting">settings</string>
+
+    <!--通知页-->
+    <string name="fragment_notice_invite_type_title">meeting scheduling invitation to be invited to</string>
+    <string name="fragment_notice_invite_watch_type_title">watch the invitation to invite the house</string>
+    <string name="fragment_notice_kickout_type_title">out of the meeting schedule</string>
+    <string name="fragment_notice_description" formatted="false">meeting scheduling invitation</string>
+    <string name="fragment_notice_description_watch" formatted="false">invite you to watch </string>
+    <string name="title_conference_notification"> meeting scheduling notification </string>
+
+    <!--设置页-->
+    <string name="fragment_setting_disturb">telephone no bother</string>
+    <string name="fragment_setting_about">about</string>
+    <string name="fragment_setting_clear_cache"> clears the cache </string>
+    <string name="fragment_setting_clear_notification"> (clears all notification messages) </string>
+    <string name="fragment_setting_logout"> exits login </string>
+
+    <!--关于-->
+    <string name="about">about</string>
+    <string name="activity_about_update">version update</string>
+    <string name="activity_about_already_new"> is the latest version </string>
+    <string name="activity_about_has_new"> has a new version, please check to update </string>
+
+    <!--会议-->
+    <string name="meet_not_exit"> meeting scheduling does not exist </string>
+    <string name="meet_max_num"> meeting scheduling reaches the maximum number </string>
+    <string name="white_board_not_exist"> meeting without whiteboard sharing </string>
+    <string name="white_board_has_exist"> repeatedly opens whiteboard </string>
+    <string name="white_board_not_opener"> is not whiteboard sharing initiator </string>
+    <string name="white_board_exist"> meeting has a whiteboard share </string>
+    <string name="white_board_start"> failed to open whiteboard </string>
+    <string name="create_meet_err"> failed to create the meeting </string>
+    <string name="raise_hands_err"> raise failed </string>
+    <string name="joine_err"> failed to join the meeting </string>
+    <string name="send_nofity"> failed to send the invitation </string>
+    <string name="start_play_err"> video record does not exist </string>
+
+    <string name="delete_meet_err"> delete meeting failed </string>
+    <string name="update_meet_err"> failed to modify the meeting </string>
+    <string name="invite_user_err"> invitation failed </string>
+    <string name="cancel_invite_user_err">cancel invitation failed </string>
+    <string name="get_meet_info_err"> failed to get the meeting information </string>
+    <string name="quite_talk_err"> exit dialogue failed </string>
+    <string name="kitout_err"> failed the attendees </string>
+    <string name="change_video_err"> transformation layout information failed </string>
+    <string name="getlayout_info_err"> failed to getlayout information </string>
+    <string name="jinyan_close_err"> forbidden speech failed </string>
+    <string name="jinyan_open_err"> abort </string>
+    <string name="start_talk_err"> failed to open the dialogue </string>
+    <string name="join_talk_err"> join the intercom failed </string>
+    <string name="create_group_err"> failed to create the group </string>
+    <string name="get_err"> failed to get </string>
+    <string name="delete_err"> deletion failed </string>
+    <string name="quite_err"> exit failed </string>
+    <string name="update_err"> failed to modify </string>
+    <string name="add_err"> add failure </string>
+    <string name="open_white_board"> failed to enter the whiteboard </string>
+    <string name="close_white_board"> exit whiteboard failed </string>
+    <string name="update_white_board"> failed to update the whiteboard </string>
+    <string name="switch_meet_layout"> replacement layout failed </string>
+    <string name="start_record"> failed to start recording </string>
+
+    <string name="unline"> this meeting scheduling has ended </string>
+    <string name="out_of_conference"> you have been asked to schedule the meeting </string>
+    <string name="conference_title_left"> person </string>
+    <string name="conference_title_right">camera</string>
+    <string name="conference_title_middle">channel</string>
+    <!--对讲-->
+    <string name="channel_change_size">change channel (%d)</string>
+    <string name="channel_detail">channel detail</string>
+    <string name="channel_detail_all_user">all members</string>
+    <string name="channel_detail_channel_name">channel name: %s</string>
+    <string name="channel_detail_channel_id">channel ID: %s</string>
+    <string name="channel_detail_channel_max_duration">max speak duration: %d s</string>
+    <!--引导-->
+    <string name="experience_right_now">experience immediately</string>
+
+
+    <!--升级提示关 -->
+    <string name="update_title_force">version updates</string>
+    <string name="update_title_choose">version updates</string>
+    <string name="update_sd_card_not_ready">failed to download, please confirm whether is available on the sd card</string>
+    <string name="update_download_error">download failed</string>
+    <string name="update_download_percent"> has downloaded %1$s</string>
+    <string name="update_download"> has been downloaded </string>
+    <string name="update_download_waite"> wait </string>
+    <string name="update_download_latest_version"> is currently the latest version </string>
+    <string name="update_checking"> is checking &#8230;</string>
+    <string name="update_download_not_wifi_tip"> is currently a non-wifi network, is it downloaded?</string>
+    <string name="update_plugin_progress"> is downloading %1$s/%2$s</string>
+    <string name="network_invalide"> network connection has a problem, please check the network </string>
+    <string name="no_data"> temporary data </string>
+    <string name="network_timeout"> network is unstable, please try later</string>
+    <string name="network_error_common"> system error </string>
+    <string name="conference_finished"> session has ended </string>
+
+    <!--聊天信息-->
+    <string name="chat_info_title"> chat message </string>
+    <string name="create_conference"> creates meeting scheduling </string>
+    <string name="video_chat"> video pair </string>
+    <string name="clear_chat_record"> clears the chat record </string>
+    <string name="capture"> collection </string>
+    <string name="player"> plays </string>
+    <string name="player_faile"> failed, the other no response </string>
+    <string name="capture_stop"> closes collection </string>
+    <string name="load_kitout"> login kicks </string>
+    <string name="other_load"> you login on another device</string>
+    <string name="meet_kitout"> meeting kicked out </string>
+    <string name="meet_kitout_ed"> you get kicked out of the meeting [%1$s]</string>
+    <string name="invisitor"> invitation </string>
+    <string name="talk_invistor_miss"> you did not answer the call from %1$s at %2$s </string>
+    <string name="meet_invistor_miss"> you did not attend the meeting scheduling held by %1$s at %2$s</string>
+    <string name="meet_invistor_attend">%1$s make an appointment to cancel the meeting schedule you attended at %2$s </string>
+    <string name="zuotian">yesterday</string>
+    <string name="qiantian">the day before yesterday</string>
+    <string name="hour">hour</string>
+    <string name="minute">minute</string>
+    <string name="second">second</string>
+    <string name="time_long">time long:</string>
+    <string name="city_map">the city list of the city</string>
+    <string name="zhixiashi">直辖市或特别行政区</string>
+    <string name="off_map"> offline map download </string>
+    <string name="pause">pause</string>
+    <string name="cont">continue</string>
+    <string name="map_size"> map size :%1$s</string>
+    <string name="area_search"> queries by region </string>
+    <string name="download"> downloading </string>
+    <string name="download_title"> download </string>
+    <string name="max_download"> downloads up to three at the same time</string>
+    <string name="start_false"> failed at the beginning </string>
+    <string name="pause_false"> timeout failed </string>
+    <string name="pre_load"> is ready to download </string>
+    <string name="map_delete_false"> deletion failed </string>
+    <string name="map_update_no"> is not updated </string>
+    <string name="gps_open"> please turn on gps navigation </string>
+    <string name="reload_msg"> this account is already online, is it mandatory to log in?</string>
+    <string name="new_version"> update new version </string>
+    <string name="download_success"> was downloaded successfully </string>
+    <string name="download_false"> failed to download </string>
+    <string name="no_net"> currently has no network </string>
+    <string name="kitout_load"> you have been kicked out of login </string>
+    <string name="chang_pwd"> change password </string>
+    <string name="old_pwd"> please enter the original password </string>
+    <string name="new_pwd"> please enter the new password </string>
+    <string name="new_pwd_re"> please enter password again</string>
+    <string name="old_pwd_empty"> the original password cannot be empty </string>
+    <string name="new_pwd_empty"> the new password cannot be empty </string>
+    <string name="new_pwd_re_empty"> repeat the new password cannot be empty </string>
+    <string name="pwd_diff"> two new passwords are inconsistent </string>
+    <string name="pwd_has_changed"> password has been changed </string>
+    <string name="req_false"> failed </string>
+    <string name="is_loading"> is logging in </string>
+    <string name="is_loading_file"> is loading </string>
+    <string name="count_pwd_empty"> account or password cannot be empty </string>
+    <string name="double_click_exit"> press again to exit the application </string>
+    <string name="new_setting"> networking settings </string>
+    <string name="save_change"> save </string>
+    <string name="ip_address_empty">ip/port cannot be empty </string>
+    <string name="input_right_txt"> please enter the correct ip address </string>
+    <string name="pore_right_txt">port is a four-digit </string>
+    <string name="img"> picture </string>
+    <string name="audio">audio</string>
+    <string name="person_share"> people share </string>
+    <string name="person_share_from">person share from %s </string>
+    <string name="person_share_device_from">person share device from %s </string>
+
+    <string name="device_share"> device share </string>
+    <string name="zhiling_diaodu">is instruction scheduling </string>
+    <string name="zhiling_diaodu_title"> instruction scheduling </string>
+    <string name="zhiling_diaodu_temporary_group">temporary instruction scheduling group</string>
+    <string name="is_delete_this_msg">delete this message?</string>
+    <string name="search">search</string>
+    <string name="person_msg">person</string>
+    <string name="group_msg">group</string>
+    <string name="content_msg">content</string>
+    <string name="device_name">camera</string>
+    <string name="online">online</string>
+    <string name="offline_other">offline other</string>
+    <string name="offline">offline</string>
+    <string name="empty_kongxian">free </string>
+    <string name="capture_ing">capture ing</string>
+    <string name="talk_ing">is talking</string>
+    <string name="meet_ing">is meeting</string>
+    <string name="trunk_speak_ing">is trunk speaking</string>
+    <string name="offline_1">(offline)</string>
+    <string name="empty_kongxian_1">(free)</string>
+    <string name="capture_ing_1">(capture ing ...)</string>
+    <string name="talk_ing_1">(is talking ...)</string>
+    <string name="meet_ing_1">(is meeting ...)</string>
+    <string name="trunk_speak_ing_1">(is trunk speaking...)</string>
+    <string name="device_empty"> device is empty </string>
+    <string name="get_device_empty"> failed to get device </string>
+    <string name="player_success"> played successfully </string>
+    <string name="device_item"> device :</string>
+    <string name="market_item"> tag :</string>
+    <string name="domain_item"> field tag (click invalid):</string>
+    <string name="person_item"> person :</string>
+    <string name="load_quick"> tries to load in the address</string>
+    <string name="load_distance"> tries to get in the distance</string>
+    <string name="time_ref_location">before update location </string>
+    <string name="get_person_false"> gets user failure </string>
+    <string name="get_device_false"> failed to get device </string>
+    <string name="get_group_false"> get group information error </string>
+    <string name="get_group_empty"> this group has no user </string>
+    <string name="sos_false"> help failed </string>
+    <string name="me_talk_ing"> i am talking </string>
+    <string name="person_talk_ing"> is talking </string>
+    <string name="kitout_group"> you are kicked out of the intercom </string>
+    <string name="group_delete"> pair is deleted </string>
+    <string name="player_stop_success"> stops playing successfully </string>
+    <string name="invisitor_title"> invites </string>
+    <string name="group_invisitor_notice"> invites you to join the group talk, is that acceptable?</string>
+    <string name="group_empty"> current pair less than</string>
+    <string name="join_deal"> added </string>
+    <string name="join_success"> channel successfully </string>
+    <string name="join_false"> join failed </string>
+    <string name="qiangmai_false"> failed to rob the wheat </string>
+    <string name="open_power_false"> failed to open permissions </string>
+    <string name="start_capture_false"> failed to open the collection </string>
+    <string name="time_out"> timeout </string>
+    <string name="now_is_kongxian"> is currently free </string>
+    <string name="jieping_success"> screenshot successfully </string>
+    <string name="local_size_max"> storage space reaches the threshold value </string>
+    <string name="stop_capture_success"> collection ends </string>
+    <string name="capture_success"> was successfully collected </string>
+    <string name="capture_false"> collection failed </string>
+    <string name="other_diaodu"> currently has other schedulings, are they closed?</string>
+    <string name="other_wait_accept">currently has other schedulings wait accept, are they closed?</string>
+    <string name="video_watch_success"> video to see success </string>
+    <string name="video_watch_false"> video failed </string>
+    <string name="duifang_close"> the other party has closed </string>
+    <string name="jinmai"> forbidden wheat </string>
+    <string name="jiejinmai">release </string>
+    <string name="duifang_refuse_talk_video"> rejected video scheduling invited </string>
+    <string name="duifang_no_xiangying"> does not respond </string>
+    <string name="qiehuan_meet_video_false"> switch failure </string>
+    <string name="duifang_offline"> each other not online </string>
+    <string name="duifang_exite_talk_video"> each other out of the video scheduling </string>
+    <string name="duifang_has_no_add"> does not join video scheduling </string>
+    <string name="duifang_has_end"> is over </string>
+    <string name="is_exite_video_diaodu"> is out of this video scheduling?</string>
+    <string name="is_accept_meet_diaodu"> invites you to attend the meeting scheduling, is that acceptable?</string>
+    <string name="video">video</string>
+    <string name="talk">voice</string>
+    <string name="invisitor_you"> invites you to </string>
+    <string name="qiehuandao"> to switch to </string>
+    <string name="diaodu_shifou">dispatch?</string>
+    <string name="weijiaru_talk_diaodu"> does not add voice scheduling </string>
+    <string name="talk_has_end"> is over </string>
+    <string name="is_exite_talk_diaodu"> exit this voice scheduling?</string>
+    <string name="waite_accept_notice"> waits for the other party to accept the invitation...</string>
+    <string name="linshi_meet"> interim meeting </string>
+    <string name="diaodu_has_end"> > is finished </string>
+    <string name="meet_diaodu_has_end"> meeting scheduling is over </string>
+    <string name="waite_duifang_accept_this_diaodu"> waits for the other party to accept the invitation...</string>
+    <string name="waite_you_attend_meet"> invites you to the meeting...</string>
+    <string name="meet">meeting </string>
+    <string name="waite_you_video_diaodu"> invites you to call video...</string>
+    <string name="waite_you_talk_diaodu"> invites you to speak in voice...</string>
+    <string name="has_txt">have</string>
+    <string name="num_dian">point</string>
+    <string name="notice_title">notice </string>
+    <string name="setting">setting</string>
+    <string name="delete_all_msg">are you sure to clear all messages?</string>
+    <string name="has_delete_all_msg"> has cleared the notification message </string>
+    <string name="is_upload_ing"> is uploading </string>
+    <string name="upload_success"> uploaded successfully </string>
+    <string name="file_upload_false"> file upload failed </string>
+    <string name="upload_false"> upload failed </string>
+    <string name="upload_file_too_big"> file is too large </string>
+    <string name="all_is_new_version"> is currently the latest version </string>
+    <string name="version_new_title">latest version of system </string>
+    <string name="update_at_once"> updates </string>
+    <string name="not_support_upload_img"> current version does not support image upload </string>
+    <string name="edit"> edit </string>
+    <string name="selected_all">select all </string>
+    <string name="selected_all_not"> none </string>
+    <string name="video_is_upload"> video is uploading </string>
+    <string name="img_is_upload"> picture is uploading </string>
+    <string name="selected_need_upload_file"> please select the uploaded file </string>
+    <string name="upload_num_is"> upload num </string>
+    <string name="is_error"> error </string>
+    <string name="current_progress"> is being uploaded, and the upload progress is </string>
+    <string name="player_complete">plays end</string>
+    <string name="user_not_attended">the user is not present and cannot select</string>
+    <string name="change_user_empty"> exchanges cannot be empty </string>
+    <string name="change_local_empty"> swap position cannot be empty </string>
+    <string name="change_is_success"> was exchanged successfully </string>
+    <string name="local_no_user"> no one is in this position oh ~</string>
+    <string name="quanti_jinyan"> all forbidden speech succeeded </string>
+    <string name="jinyan_success">forbidden speech succeeded </string>
+    <string name="kitout_success"> kicked out successfully </string>
+    <string name="invisitor_success"> invite success </string>
+    <string name="invisitor_you_meet_diaodu"> invites you to the meeting schedule </string>
+    <string name="invisitor_you_video_diaodu"> invites you to join video dispatch </string>
+    <string name="invisitor_you_talk_diaodu"> invites you to participate in voice scheduling </string>
+    <string name="weiruhui">un join</string>
+    <string name="yiruhui">has join</string>
+    <string name="yishangqiang">has been on the wall</string>
+    <string name="weishangqiang">not on the wall</string>
+    <string name="selected_share_file"> please select the file you want to share </string>
+    <string name="selected_share_img"> please select the image to share </string>
+    <string name="canhuiren_list"> attendees </string>
+    <string name="meet_diaodu_name"> please enter the meeting scheduling name </string>
+    <string name="quanliao_name">please enter group chat name </string>
+    <string name="meet_diaodu_title"> conference scheduling name </string>
+    <string name="video_close"> closes video </string>
+    <string name="hand_up_success"> raise your hand </string>
+    <string name="video_open"> opens video </string>
+    <string name="share_file"> share file </string>
+    <string name="share_img"> share image </string>
+    <string name="file_is_bigger_than">the document is greater than 50m</string>
+    <string name="meet_no_record"> this meeting has no meeting record </string>
+    <string name="meet_diaodu_detail"> meeting scheduling details </string>
+    <string name="whiteboard_open_success"> whiteboard is on </string>
+    <string name="you_bei_kitout_meet"> you are kicked out of the meeting schedule </string>
+    <string name="you_leave_draw"> you have left the screen </string>
+    <string name="you_join_draw"> you have entered the screen </string>
+    <string name="no_start_user"> you are not sharing the originator, have no right to operation </string>
+    <string name="no_xiangying"> no response </string>
+    <string name="refuse"> reject </string>
+    <string name="has_handup"> raised </string>
+    <string name="local_share"> local share </string>
+    <string name="white_board_close"> close whiteboard </string>
+    <string name="whit_board_open"> open whiteboard </string>
+    <string name="is_jiesan_diaodu"> disbands or exits conference scheduling?</string>
+    <string name="is_exite_diaodu"> whether to quit this meeting scheduling?</string>
+    <string name="exite"> exits </string>
+    <string name="jiesan"> dissolves </string>
+    <string name="file_trans_false"> file conversion failed </string>
+    <string name="has_invisitor_success"> has invited the selected person </string>
+    <string name="start_white_board"> open whiteboard </string>
+    <string name="liuliang_notice">you are currently on a 4g/3g network, are you downloading a new version?</string>
+    <string name="find_new_version"> discovered the new version </string>
+    <string name="new_version_has_complete"> new version is ready, is it installed?</string>
+    <string name="year">year</string>
+    <string name="yue">month</string>
+    <string name="ri">day</string>
+    <string name="erweima_code"> scan the qr code to get the terminal version </string>
+    <string name="version_quan"> nanjing arms industry all copyright © 2018 </string>
+    <string name="sett_server"> setting</string>
+    <string name="niming_ruhui"> anonymous entry </string>
+    <string name="old_pwd_txt">old password</string>
+    <string name="new_pwd_txt">new password</string>
+    <string name="marksure_pwd"> confirm password </string>
+    <string name="simple_demo"> input sample: </string>
+    <string name="send">send</string>
+    <string name="seach_with_emptyh"> search</string>
+    <string name="has_no_data"> has no message </string>
+    <string name="search_zhiding_content">search content</string>
+    <string name="person_txt_content">person</string>
+    <string name="group_txt_content">group</string>
+    <string name="content_txt_content">string</string>
+    <string name="tongxunlu"> address book </string>
+    <string name="offline_map_txt"> offline map download </string>
+    <string name="call_record">call record</string>
+    <string name="local_video_txt"> local video </string>
+    <string name="notice_txt"> notification message </string>
+    <string name="setting_txt"> setting </string>
+    <string name="show_mode"> display mode </string>
+    <string name="mode_hine"> after opening the main preview often shows the map </string>
+    <string name="is_local_record"> is recorded locally </string>
+    <string name="is_show_weixing"> whether to display satellite map (effective public) </string>
+    <string name="change_pwd_hint"> change password </string>
+    <string name="sos_user">sos emergency contact </string>
+    <string name="one_key_up">  key upload log </string>
+    <string name="capture_qingxidu"> collection resolution </string>
+    <string name="player_qingxi"> playback clarity </string>
+    <string name="capture_bianma"> collection code </string>
+    <string name="yingbianma">hard compiled</string>
+    <string name="ruanbianma">soft compiled </string>
+    <string name="player_jiema"> play decoding </string>
+    <string name="yingjiema">hard decoding</string>
+    <string name="ruanjiema">soft decoding</string>
+    <string name="quhuisheng">to echo </string>
+    <string name="zidongzengyi"> automatic gain </string>
+    <string name="jiangzao"> noise reduction </string>
+    <string name="chongcaiyang">recapture</string>
+    <string name="close_txt">close</string>
+    <string name="open_txt">open</string>
+    <string name="talk_diaodu_txt"> voice scheduling </string>
+    <string name="video_diaodu_txt"> video dispatch </string>
+    <string name="meet_diaodu_txt"> meeting schedule </string>
+    <string name="video_watch_txt"> video view </string>
+    <string name="zhiling_diaodu_txt">instruction scheduling</string>
+    <string name="accept"> accept </string>
+    <string name="dangqian_group"> current group: </string>
+    <string name="online_user_list">online people list </string>
+    <string name="jingyin_txt"> mute </string>
+    <string name="guaduan_hint"> hang up </string>
+    <string name="local_video_list_txt">local video </string>
+    <string name="local_img_txt"> local image </string>
+    <string name="delete"> delete </string>
+    <string name="delete_confirm">&#160;&#160;&#160;&#160;&#160;&#160;cannot be restored after delete,delete confirm ? </string>
+    <string name="upload_txt">upload </string>
+    <string name="zanwu_offline_map"> has no offline map </string>
+    <string name="continue_txt"> continues </string>
+    <string name="upload_hint_txt"> update </string>
+    <string name="download_apk_start">download apk started</string>
+    <string name="ent_meet_diaodu_txt"> enters the meeting schedule </string>
+    <string name="meet_diaodu_record_txt"> meeting scheduling video </string>
+    <string name="yingguangbi_txt">fluorescent pen</string>
+    <string name="gangbi_txt">pen</string>
+    <string name="yanse_txt">color</string>
+    <string name="xiangpica_txt">the eraser</string>
+    <string name="qingchu_txt">clear </string>
+    <string name="attend_user_txt">attendees </string>
+    <string name="yijianjinyan_txt">one key injunctive </string>
+    <string name="meet_diaodu_name_txt"> conference scheduling name </string>
+    <string name="record_save_txt"> video store </string>
+    <string name="dengfen_layout_txt"> equipartition layout </string>
+    <string name="big_samll_txt"> size layout </string>
+    <string name="no_find_usb_camera">not find usb camera</string>
+    <string name="share_img_txt"> share image </string>
+    <string name="share_file_txt">share the document </string>
+    <string name="jinyan_txt">banned </string>
+    <string name="qiehuan_shexiangtou_txt"> toggle camera </string>
+    <string name="qiehuan_waizhi_txt">outside camera</string>
+    <string name="user_list_txt">people list </string>
+    <string name="hande_up_txt"> raise your hand </string>
+    <string name="layout_txt"> layout </string>
+    <string name="start_record_txt">start recording </string>
+    <string name="dangqiang_layout_txt"> current layout </string>
+    <string name="is_en_show">is show en</string>
+    <string name="person_title">person</string>
+    <string name="meet_join">join meet scheduling</string>
+    <string name="meet_leave">leave meet scheduling</string>
+    <string name="only_audio">only capture audio</string>
+    <string name="map_load_error">some net can not load，on switch ，if not load，can delete and reload</string>
+    <string name="duifang_exite_talk_talk_video"> each other out of the talk scheduling </string>
+    <string name="ing_with">whit</string>
+    <string name="ing_with_talk">talk</string>
+    <string name="duifang_refuse_talk_talk_video"> each other refuse of the talk scheduling</string>
+    <string name="distance_me">distance to me:</string>
+    <string name="distance_dan"> m</string>
+    <string name="jingdu">latitude：</string>
+    <string name="weidu">longitude：</string>
+    <string name="capture_drawer">capture level</string>
+    <string name="capture_malv">capture bitrate</string>
+    <string name="captur_malv_low">low</string>
+    <string name="captur_malv_middle">middle</string>
+    <string name="captur_malv_heigh">high</string>
+    <string name="captur_malv_customer">customer</string>
+    <string name="net_auto">net auto set</string>
+    <string name="use_encrypt">use encrypt</string>
+    <string name="use_encrypt_init">encrypt init</string>
+    <string name="net_auto_start">open</string>
+    <string name="net_auto_close">close</string>
+    <string name="canshu_setting">setup parameters</string>
+    <string name="map_setting">map parameters</string>
+    <string name="map_location_frequency">GPS upload frequency</string>
+    <string name="anjian_setting">setup keycode</string>
+    <string name="player_drawer">player level</string>
+
+    <string name="play_start_notice">please try again, init false</string>
+    <string name="login_empty">this user is gone</string>
+    <string name="login_error_txt">password is error</string>
+
+    <string name="now_is_talk">you are talking</string>
+    <string name="now_is_capture">you are capturing</string>
+    <string name="now_is_play">you are playing</string>
+    <string name="now_is_meet">you are meeting</string>
+    <string name="now_is_video">you are in video</string>
+
+    <string name="user_name">username</string>
+    <string name="user_pwd">password</string>
+
+    <string name="user_more">user is too many，to be continue？</string>
+
+    <string name="receive">receive message from</string>
+    <string name="place_watch">, palce go to message activity~</string>
+
+    <string name="tran_model">trans format</string>
+
+    <string name="cameraindex_notice">camera is foreground，unable to use</string>
+
+    <string name="time_out_share">this share has timeout</string>
+
+    <string name="no_this_user">no this user</string>
+    <string name="old_pwd_error">old password is error</string>
+    <string name="change_error">update password faile</string>
+
+
+    <string name="default_camera">default camera</string>
+    <string name="camera_foreground">camera foreground</string>
+    <string name="camera_back">camera Background</string>
+    <string name="guanmo_is_offline">watcher is offline</string>
+    <string name="guanmo_is_stop">watcher is stop</string>
+
+    <string name="guanmo_capture_is_offline">watcher capture is offline</string>
+    <string name="guanmo_capture_is_stop">watcher capture is stop</string>
+
+    <string name="p2p_error_init">lan init faile</string>
+    <string name="p2p_title">offline mode</string>
+    <string name="p2p_change_now">change now</string>
+    <string name="p2p_disconnect_info">can\'t connect server,will change to offline mode after %s tries</string>
+    <string name="p2p_is_running_and_this_function_not_support">not support this function when in offline mode</string>
+
+    <string name="notice_img">image</string>
+    <string name="notice_file">file</string>
+    <string name="notice_share">share</string>
+
+    <string name="audio_start">Talk Audio from</string>
+    <string name="video_start">Talk Video from</string>
+    <string name="meet_start">start</string>
+    <string name="to_start">to</string>
+    <string name="no_this_column">this column is delete</string>
+    <string name="is_start_meet">init meeting</string>
+    <string name="chang_language">some page need restart</string>
+
+
+    <string name="ptt_key">ptt keycode</string>
+    <string name="sos_key">sos keycode</string>
+    <string name="sos">sos</string>
+    <string name="sos_call">emergency call</string>
+    <string name="camera_key">camera keycode</string>
+    <string name="video_key">video keycode</string>
+    <string name="ptt_channel_left">change ptt channel left</string>
+    <string name="ptt_channel_right">change ptt channel right</string>
+
+    <string name="start_ptt_key">start set ptt keycode</string>
+    <string name="start_sos_key">start set sos keycode</string>
+    <string name="start_camera_key">start set camera keycode</string>
+    <string name="start_video_key">start set video keycode</string>
+    <string name="start_ptt_left_key">start set ptt channel left keycode</string>
+    <string name="start_ptt_right_key">start set ptt channel right keycode</string>
+
+    <string name="meet_diaodu_ing">in meeting ...</string>
+    <string name="video_diaodu_ing">in video ...</string>
+    <string name="talk_diaodu_ing">in talk ...</string>
+    <string name="no_markets">no markets</string>
+    <string name="out_camera">no out camera</string>
+
+    <!--离线地图-->
+    <string name="offline_current_map">current display area map</string>
+    <string name="offline_no_cityid">the current network is unable to get the city ID</string>
+    <string name="offline_current_city">current</string>
+    <string name="no_adress_name">the address name was not obtained</string>
+    <string name="offline_map_downloaded">offline map downloaded</string>
+    <string name="offline_map_downloading">offline map downloading</string>
+    <string name="offline_map_star_downloading">offline map start downloading</string>
+    <string name="my_map">my map</string>
+    <string name="my_map_no_mark">not find any mark</string>
+    <string name="my_map_delete_msg">delete all marks?</string>
+    <string name="my_map_delete_success">delete success</string>
+    <string name="my_map_delete_error">delete fail</string>
+    <string name="delete_all_marker">delete all marker?</string>
+
+    <!-- 拓扑图 -->
+    <string name="topo">Topological graph</string>
+    <string name="topo_empty">empty Topological device</string>
+
+    <!--服务-->
+    <string name="service_in_operation">in operation...</string>
+
+    <!-- 设置 -->
+    <string name="setting_more">more</string>
+    <!--通话记录-->
+    <string name="empty_call_record">empty call record</string>
+    <string name="immediate_accession">immediate accession>></string>
+
+    <string name="delete_record">delete all record ?</string>
+    <string name="convened_meeting">%s convened meeting(%s)</string>
+    <string name="close_talk">you are talking now,Whether to enter the meeting!</string>
+    <string name="broadcast_video">there are new video broadcast，Whether to switch playback or not！</string>
+
+    <string name="bandwidth_detection">bandwidth detection</string>
+    <string name="bandwidth_CMD">commend</string>
+    <string name="bandwidth_start">start</string>
+    <string name="bandwidth_stop">stop</string>
+    <string name="bandwidth_interval">interval</string>
+    <string name="bandwidth_time">time</string>
+    <string name="bandwidth_width">bandwidth</string>
+    <string name="bandwidth_server">server address</string>
+    <string name="bandwidth_server_port">server port</string>
+
+
+    <!-- 加密 -->
+    <string name="encrypt_setting">encrypt setting</string>
+    <string name="encrypt_init_error">encrypt init error</string>
+    <string name="encrypt_change_psw">modify encrypt password</string>
+    <string name="encrypt_update_secret_key">update encrypt secret key</string>
+    <string name="encrypt_destory_local_secret_key">destory local encrypt secret key</string>
+    <string name="encrypt_change_psw_success">modify encrypt password success</string>
+    <string name="encrypt_change_psw_error">modify encrypt password error</string>
+    <string name="encrypt_update_secret_key_success">update encrypt secret key success</string>
+    <string name="encrypt_update_secret_key_error">update encrypt secret key error</string>
+    <string name="encrypt_card_psw">encrypt  password</string>
+    <string name="encrypt_card_psw_hint">please input card password</string>
+    <string name="encrypt_card_uninit">uninit success</string>
+
+    <string name="play_audio_error">play audio error</string>
+
+    <string name="downloading">downloading...</string>
+
+
+    <string name="network_private">private network</string>
+    <string name="network_public">public network</string>
+
+</resources>

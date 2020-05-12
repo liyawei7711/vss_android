@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3a4048</color>
+    <color name="colorPrimaryDark">#3a4048</color>
+    <color name="colorAccent">#3a4048</color>
+    <color name="blued8e4f2">#d8e4f2</color>
+
+    <color name="blue2">#3f74fd</color>
+    <color name="bluec7e8ff">#c7e8ff</color>
+
+    <color name="text539bf0">#539bf0</color>
+
+    <color name="gray4e535b">#4e535b</color>
+    <color name="back_gray">#dddddd</color>
+
+    <color name="white">#fff</color>
+    <color name="purple">#605fbc</color>
+    <color name="purple_dark">#601fbc</color>
+    <color name="transparent">#00000000</color>
+    <color name="black333">#333</color>
+    <color name="black383b4a">#383b4a</color>
+    <color name="black666">#666</color>
+    <color name="black999">#999</color>
+    <color name="black7f000000">#7f000000</color>
+
+    <color name="green">#32ca7d</color>
+    <color name="blue_3eb1fe">#3eb1fe</color>
+    <color name="purple_connecting">#cc66ff</color>
+    <color name="red_disconnect">#ff6600</color>
+
+    <color name="red">#f24b4b</color>
+
+    <color name="blue">#4D48AE</color>
+    <color name="blue_board">#9FB8E7</color>
+
+    <color name="divider_cccccc">#cccccc</color>
+    <color name="cc057dff">#cc057dff</color>
+    <color name="blue057dff">#057dff</color>
+
+
+</resources>

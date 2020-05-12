@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/network_private"
+            android:textColor="@color/purple"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_settings_net" />
+
+        <EditText
+            android:id="@+id/edt_address_ip"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/activity_input_url_address_hint"
+            android:maxLength="15"
+            android:singleLine="true"
+            android:text="192.168.1.66"
+            android:textColor="@color/black333"
+            android:textSize="15sp" />
+
+        <View
+            android:background="@color/back_gray"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+        <EditText
+            android:id="@+id/edt_address_port"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/activity_input_url_path_hint"
+            android:inputType="number"
+            android:maxLength="4"
+            android:singleLine="true"
+            android:text="8000"
+            android:textColor="@color/black333"
+            android:textSize="15sp" />
+        <View
+            android:background="@color/back_gray"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+        <RadioButton
+            android:id="@+id/cb_private"
+            android:text="使用此配置"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/network_public"
+            android:textColor="@color/purple"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_settings_net" />
+
+        <EditText
+            android:id="@+id/edt_address_ip_public"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/activity_input_url_address_hint"
+            android:maxLength="15"
+            android:singleLine="true"
+            android:text="192.168.1.66"
+            android:textColor="@color/black333"
+            android:textSize="15sp" />
+
+        <View
+            android:background="@color/back_gray"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+        <EditText
+            android:id="@+id/edt_address_port_public"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="@string/activity_input_url_path_hint"
+            android:inputType="number"
+            android:maxLength="4"
+            android:singleLine="true"
+            android:text="8000"
+            android:textColor="@color/black333"
+            android:textSize="15sp" />
+        <View
+            android:background="@color/back_gray"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+        <RadioButton
+            android:id="@+id/cb_public"
+            android:text="使用此配置"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/simple_demo"
+            android:textColor="@color/purple"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="8000"
+            android:textColor="@color/purple"
+            android:textSize="13dp" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_lixian_map"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@drawable/cebianlan_lixianditu"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:background="@color/white"
+        android:text="@string/offline_map_txt"
+        android:textColor="@color/black333"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/tv_iperf"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@drawable/cebianlan_lixianditu"
+        android:drawablePadding="10dp"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:background="@color/white"
+        android:text="@string/bandwidth_detection"
+        android:textColor="@color/black333"
+        android:textSize="16sp" />
+
+</LinearLayout>

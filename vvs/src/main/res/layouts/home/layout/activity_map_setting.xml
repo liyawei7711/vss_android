@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="@string/is_show_weixing"
+                android:textColor="@color/black999"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:id="@+id/rg_map_weixing"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp">
+
+                <RadioButton
+                    android:id="@+id/rbt_map_weixing_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_check_uncheck_red"
+                    android:drawablePadding="5dp"
+                    android:text="@string/close_txt"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rbt_map_weixing_open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_check_uncheck_red"
+                    android:drawablePadding="5dp"
+                    android:text="@string/open_txt"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+
+            </RadioGroup>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="@string/map_location_frequency"
+                android:textColor="@color/black999"
+                android:textSize="14sp" />
+
+            <RadioGroup
+                android:id="@+id/rg_location_frequency"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp">
+
+                <RadioButton
+                    android:id="@+id/rbt_location_frequency_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_check_uncheck_red"
+                    android:drawablePadding="5dp"
+                    android:text="@string/captur_malv_low"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rbt_location_frequency_middle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_check_uncheck_red"
+                    android:drawablePadding="5dp"
+                    android:text="@string/captur_malv_middle"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rbt_location_frequency_high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_check_uncheck_red"
+                    android:drawablePadding="5dp"
+                    android:text="@string/captur_malv_heigh"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+            </RadioGroup>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

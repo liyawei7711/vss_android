@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigate_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/tv_preview"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="13dp"
+        android:src="@drawable/selector_yulan_btn"
+        android:visibility="gone"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/tv_toggle"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/selector_shipincaiji_btn"
+        tools:ignore="ContentDescription" />
+
+
+</LinearLayout>

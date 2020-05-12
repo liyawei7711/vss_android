@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/transparent"
+    android:paddingBottom="10dp"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        app:cardBackgroundColor="@android:color/white"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="5dp">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="44dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <View
+                    android:background="@drawable/shape_blue_55a2fd"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_width="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_my_map"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/my_map"
+                    android:textColor="@color/black333"
+                    android:textSize="18sp" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/tv_select_all"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:text="@string/selected_all"
+                        android:textColor="@color/selector_my_map_select_all"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_delete"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="14dp"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:text="@string/delete"
+                        android:textColor="@color/blue057dff"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/tv_cancel"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="14dp"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:text="@string/cancel"
+                        android:textColor="@color/blue057dff"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_edit"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="14dp"
+                        android:layout_width="wrap_content"
+                        android:text="@string/edit"
+                        android:textColor="@color/blue057dff"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_height="240dp"
+                    android:layout_width="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/tv_empty"
+                    android:text="@string/my_map_no_mark"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/black333"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+

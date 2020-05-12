@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context="huaiye.com.vvs.ui.iperf.IperfActivity">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="14sp"
+            android:textColor="@color/black999"
+            android:text="@string/bandwidth_CMD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_cmd"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="14sp"
+            android:paddingLeft="5dp"
+            android:background="@drawable/shape_stroke_cccccc_solid_ededef"
+            android:textColor="@color/black999"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+                android:textColor="@color/black999"
+                android:text="@string/tran_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioGroup
+                android:id="@+id/rg_trans"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp">
+
+                <RadioButton
+                    android:id="@+id/rbt_tcp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_check_uncheck_red"
+                    android:drawablePadding="5dp"
+                    android:text="TCP"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rbt_udp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/selector_check_uncheck_red"
+                    android:drawablePadding="5dp"
+                    android:text="UDP"
+                    android:textColor="@color/black333"
+                    android:textSize="14sp" />
+
+            </RadioGroup>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="14sp"
+            android:textColor="@color/black999"
+            android:text="@string/bandwidth_server"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="14sp"
+            android:paddingLeft="5dp"
+            android:background="@drawable/shape_stroke_cccccc_solid_ededef"
+            android:textColor="@color/black999"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="14sp"
+            android:textColor="@color/black999"
+            android:text="@string/bandwidth_server_port"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_port"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="14sp"
+            android:paddingLeft="5dp"
+            android:background="@drawable/shape_stroke_cccccc_solid_ededef"
+            android:textColor="@color/black999"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="14sp"
+            android:textColor="@color/black999"
+            android:text="@string/bandwidth_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/et_interval"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="14sp"
+            android:paddingLeft="5dp"
+            android:background="@drawable/shape_stroke_cccccc_solid_ededef"
+            android:textColor="@color/black999"
+            android:layout_width="match_parent"
+            android:layout_height="44dp" />
+        <LinearLayout
+            android:id="@+id/ll_width"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+                android:textColor="@color/black999"
+                android:text="@string/bandwidth_width"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/et_width"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="14sp"
+                android:paddingLeft="5dp"
+                android:background="@drawable/shape_stroke_cccccc_solid_ededef"
+                android:textColor="@color/black999"
+                android:layout_width="match_parent"
+                android:layout_height="44dp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_start"
+            android:text="@string/bandwidth_start"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/shape_solid_3eb1fe"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ll_delay"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="60dp">
+                <TextView
+                    android:text="延迟"
+                    android:textSize="14sp"
+                    android:textColor="@color/black666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_delay"
+                    android:text="--"
+                    android:textSize="18sp"
+                    android:textColor="@color/black333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_bandwidth"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="60dp">
+                <TextView
+                    android:text="带宽"
+                    android:textSize="14sp"
+                    android:textColor="@color/black666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_bandwidth"
+                    android:text="--"
+                    android:textSize="18sp"
+                    android:textColor="@color/black333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_lost"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="60dp">
+                <TextView
+                    android:text="丢包"
+                    android:textSize="14sp"
+                    android:textColor="@color/black666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_lost"
+                    android:text="--"
+                    android:textSize="18sp"
+                    android:textColor="@color/black333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <FrameLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_stroke_cccccc_solid_ededef"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_info"
+                android:scrollbars="vertical"
+
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</ScrollView>

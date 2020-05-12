@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/transparent"
+    android:paddingBottom="10dp"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        app:cardBackgroundColor="@android:color/white"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="5dp">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_height="44dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:orientation="horizontal">
+
+                <View
+                    android:background="@drawable/shape_blue_55a2fd"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_width="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_my_map"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:text="@string/topo"
+                    android:textColor="@color/black333"
+                    android:textSize="18sp" />
+                <CheckBox
+                    android:id="@+id/cb_show_in_map"
+                    android:checked="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:button="@drawable/selector_toggle_btn"
+                    android:padding="5dp" />
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/ll_info"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <WebView
+                        android:id="@+id/webview"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp"/>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv"
+                        android:layout_height="200dp"
+                        android:layout_width="match_parent">
+
+                    </android.support.v7.widget.RecyclerView>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_empty"
+                    android:text="@string/topo_empty"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textColor="@color/black333"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+

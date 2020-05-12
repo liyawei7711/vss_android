@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tool="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:layout_height="60dp">
+    <ImageView
+        android:id="@+id/iv"
+        android:src="@drawable/btn_touxiang_cebianlan"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="45dp"
+        android:layout_height="45dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_name"
+                android:textSize="15dp"
+                tools:text ="名字"
+                android:textColor="@color/black333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_id"
+                tools:text ="id"
+                android:textSize="13dp"
+                android:textColor="@color/black999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:background="@color/back_gray"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
