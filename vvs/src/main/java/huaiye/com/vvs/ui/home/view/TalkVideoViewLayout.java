@@ -131,6 +131,7 @@ public class TalkVideoViewLayout extends FrameLayout implements View.OnClickList
     ImageView iv_encrypt;
 
     boolean isTalkStarter;
+    SdpMsgFindLanCaptureDeviceRsp deviceRsp;
     CStartTalkbackReq.ToUser toUser;
     int nTalkID;
     String strTalkDomainCode;
@@ -340,9 +341,10 @@ public class TalkVideoViewLayout extends FrameLayout implements View.OnClickList
         }, "speakon");
     }
 
-    public void createTalk(CStartTalkbackReq.ToUser user,String strExtParams, SdpMsgFindLanCaptureDeviceRsp device) {
+    public void createTalk(CStartTalkbackReq.ToUser user,String strExtParams, SdpMsgFindLanCaptureDeviceRsp deviceRsp) {
         AppUtils.isVideo = true;
         this.toUser = user;
+        this.deviceRsp = deviceRsp;
         this.isTalkStarter = true;
         init();
 
@@ -351,16 +353,16 @@ public class TalkVideoViewLayout extends FrameLayout implements View.OnClickList
         resetCaptureSize();
         HYClient.getHYCapture().stopCapture(null);
         HYClient.getHYCapture().setCameraConferenceMode(HYCapture.CameraConferenceMode.PORTRAIT);
-        if (device != null) {
+        if (deviceRsp != null) {
             if (((TalkVideoActivity) appBaseActivity).mP2PSample == null) {
                 showToast(AppUtils.getString(R.string.p2p_error_init));
                 realClose();
                 return;
             }
-            currentIP = device.m_strIP;
+            currentIP = deviceRsp.m_strIP;
             ((TalkVideoActivity) appBaseActivity).mP2PSample.setPlayerPreview(texture_bigger);
             ((TalkVideoActivity) appBaseActivity).mP2PSample.setCapturePreview(texture_smaller);
-            ((TalkVideoActivity) appBaseActivity).mP2PSample.requestTalk(device.m_strIP, new SdkCallback<SdkBaseParams.AgreeMode>() {
+            ((TalkVideoActivity) appBaseActivity).mP2PSample.requestTalk(deviceRsp.m_strIP, new SdkCallback<SdkBaseParams.AgreeMode>() {
                 @Override
                 public void onSuccess(SdkBaseParams.AgreeMode resp) {
                     if (resp == SdkBaseParams.AgreeMode.Refuse) {
@@ -671,6 +673,9 @@ public class TalkVideoViewLayout extends FrameLayout implements View.OnClickList
             endTalk();
         } else {
             if (appBaseActivity != null && ((TalkVideoActivity) appBaseActivity).mP2PSample != null && isVideo) {
+                SdpMsgCommonUDPMsg udpMsg = new SdpMsgCommonUDPMsg();
+                udpMsg.m_strIP = currentIP;
+                HYClient.getSdkSamples().P2P().respTalkRequest(SdkBaseParams.AgreeMode.Refuse, udpMsg);
                 ((TalkVideoActivity) appBaseActivity).mP2PSample.stopAll();
             }
         }

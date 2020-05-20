@@ -30,6 +30,7 @@ import huaiye.com.vvs.common.AppBaseFragment;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.ErrorMsg;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.ui.meet.LayoutPopupWindow;
 import huaiye.com.vvs.ui.meet.MeetActivity;
 import huaiye.com.vvs.ui.meet.basemodel.SelectedModel;
@@ -243,7 +244,7 @@ public class MeetMembersLayoutFragment extends AppBaseFragment {
         super.onViewCreated(view, savedInstanceState);
         getNavigate().setVisibility(View.GONE);
 
-        rct_view.setLayoutManager(new LinearLayoutManager(getContext()));
+        rct_view.setLayoutManager(new SafeLinearLayoutManager(getContext()));
 
         layoutPopupWindow = new LayoutPopupWindow(getContext());
         layoutPopupWindow.setConfirmClickListener(new LayoutPopupWindow.ConfirmClickListener() {

@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -16,7 +15,6 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -24,7 +22,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
 import com.baidu.mapapi.map.BaiduMap;
@@ -73,6 +70,7 @@ import com.huaiye.sdk.sdpmsgs.talk.trunkchannel.TrunkChannelBean;
 import com.ttyy.commonanno.anno.BindLayout;
 import com.ttyy.commonanno.anno.BindView;
 import com.ttyy.commonanno.anno.OnClick;
+import com.ttyy.commonanno.anno.route.BindExtra;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -86,7 +84,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-import huaiye.com.vvs.BuildConfig;
 import huaiye.com.vvs.MCApp;
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.bus.AcceptDiaoDu;
@@ -139,6 +136,7 @@ import huaiye.com.vvs.models.auth.KickOutUIObserver;
 import huaiye.com.vvs.models.contacts.bean.PersonModelBean;
 import huaiye.com.vvs.models.download.DownloadService;
 import huaiye.com.vvs.models.map.bean.BDMarkBean;
+import huaiye.com.vvs.models.p2p.SdpMsgFindLanCaptureDeviceRspWrap;
 import huaiye.com.vvs.ui.chat.ChatListActivity;
 import huaiye.com.vvs.ui.chat.ChatPlayHelper;
 import huaiye.com.vvs.ui.home.present.MainPresent;
@@ -214,7 +212,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
     @BindView(R.id.cvl_capture)
     public CaptureViewLayout cvl_capture;
     @BindView(R.id.pvl_player)
-    PlayerViewLayout pvl_player;
+    public PlayerViewLayout pvl_player;
     @BindView(R.id.menu_top_right)
     TopRightMenuView menu_top_right;
 
@@ -270,6 +268,9 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
     private BaiduMap mBaiduMap;
     public MyLocationData currentMapData;
 
+    @BindExtra
+    public boolean isNoCenter;
+
     MainPresent present;
     ClusterManager<MyCluster> clusterManager;
     RxUtils rxUtils;
@@ -298,11 +299,12 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
     /**
      * 定时检查p2p用户是否还活着
      */
-    Disposable p2pUserCheckDisposable ;
+    Disposable p2pUserCheckDisposable;
 
     AlertDialog alertDialog;
     EditText passwdEncrypt;
     boolean bFirstEncryptTip = true;
+    SdpMsgFindLanCaptureDeviceRsp mySelf;
 
     @Override
     protected void initActionBar() {
@@ -350,7 +352,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
         passwdEncrypt = new EditText(this);
         passwdEncrypt.setInputType(EditorInfo.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
         passwdEncrypt.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        AlertDialog.Builder  builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("请输入加密卡密码");
         builder.setIcon(R.drawable.anquanfanghu);
         builder.setView(passwdEncrypt);
@@ -553,8 +555,15 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
         ab_title.setOnMenuItemClickListener(new ActionBarLayout.OnMenuItemClickListener() {
             @Override
             public void onLeftMenuClick() {
-                tv_name_menu.setText(AppDatas.Auth().getUserName());
-                tv_user_id.setText(AppUtils.getString(R.string.person_title) + " ID:" + AppDatas.Auth().getUserID());
+                if (isNoCenter) {
+                    if (mySelf != null) {
+                        tv_name_menu.setText(mySelf.m_strName);
+                        tv_user_id.setText(AppUtils.getString(R.string.person_title) + " IP:" + mySelf.m_strIP);
+                    }
+                } else {
+                    tv_name_menu.setText(AppDatas.Auth().getUserName());
+                    tv_user_id.setText(AppUtils.getString(R.string.person_title) + " ID:" + AppDatas.Auth().getUserID());
+                }
 
                 showSmallView();
                 if (!slm_parent.isDrawerOpen(Gravity.LEFT)) {
@@ -566,7 +575,19 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             @Override
             public void onContactMenuClick() {
                 showSmallView();
-                startActivity(new Intent(MainActivity.this, ContactsActivity.class));
+                if (isNoCenter) {
+                    Intent intent = new Intent(MainActivity.this, P2PContactsActivity.class);
+                    ArrayList<SdpMsgFindLanCaptureDeviceRspWrap> devices = new ArrayList<>();
+                    for (MyCluster cluster : p2pUsers) {
+                        if (cluster.bean.p2pDeviceBean != null) {
+                            devices.add(new SdpMsgFindLanCaptureDeviceRspWrap(cluster.bean.p2pDeviceBean));
+                        }
+                    }
+                    intent.putExtra("devices", devices);
+                    startActivity(intent);
+                } else {
+                    startActivity(new Intent(MainActivity.this, ContactsActivity.class));
+                }
             }
 
             @Override
@@ -724,7 +745,15 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             }
         });
 
-        requestConfig();
+//        requestConfig();
+
+        if (isNoCenter) {
+            HYClient.getSdkOptions().P2P().setSupportP2P(true);
+            startP2P();
+        } else {
+            HYClient.getSdkOptions().P2P().setSupportP2P(false);
+            stopP2P();
+        }
 
         showSystemSetting();
     }
@@ -756,9 +785,6 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
                                 }
                             }
                         }
-                        if (BuildConfig.DEBUG) {
-                            HYClient.getSdkOptions().P2P().setSupportP2P(true);
-                        }
                     }
 
                     @Override
@@ -773,7 +799,6 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        System.out.println("cccccccccc onKeyDwon " + keyCode);
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (WindowManagerUtils.simpleView != null) {
                 closeMediaView();
@@ -823,7 +848,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             return;
         }
         bms_view.setVisibility(VISIBLE);
-        bmsDatas.add(0,bean);
+        bmsDatas.add(0, bean);
         //大于一时显示进度条
         dots_layout.removeAllViews();
         if (bmsDatas.size() > 1)
@@ -839,7 +864,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             Intent intent = new Intent(MainActivity.this, DownloadService.class);
             intent.putExtra("downloadURL", bean.content);
             intent.putExtra("isAudioVideo", true);
-            intent.putExtra("type",bean.type);
+            intent.putExtra("type", bean.type);
             startService(intent);
         }
 
@@ -874,30 +899,31 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
                 && AlarmMediaPlayer.get().getCurrentPlayBean().sourceType == AlarmMediaPlayer.SOURCE_CUSTOM) {
             AlarmMediaPlayer.get().stop();
         }
-        String pathName=AppUtils.subPath(path);
+        String pathName = AppUtils.subPath(path);
 
-        if (!TextUtils.isEmpty(pathName)&&pathName.endsWith(".dat")){
-            if (ChatPlayHelper.get().getVideoParam() != null&&ChatPlayHelper.get().getPlayMap().containsKey(pathName)
-                    &&ChatPlayHelper.get().getPlayMap().get(pathName)){
+        if (!TextUtils.isEmpty(pathName) && pathName.endsWith(".dat")) {
+            if (ChatPlayHelper.get().getVideoParam() != null && ChatPlayHelper.get().getPlayMap().containsKey(pathName)
+                    && ChatPlayHelper.get().getPlayMap().get(pathName)) {
                 HYClient.getHYPlayer().stopPlay(null, ChatPlayHelper.get().getVideoParam());
             }
             playLocalAudio(path);
             return;
         }
 
-        ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path),true);
-        AlarmMediaPlayer.get().play(true,AlarmMediaPlayer.SOURCE_CUSTOM,AppUtils.audiovideoPath + "/" + AppUtils.subPath(path),new AlarmMediaPlayer.PlayerListener() {
+        ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path), true);
+        AlarmMediaPlayer.get().play(true, AlarmMediaPlayer.SOURCE_CUSTOM, AppUtils.audiovideoPath + "/" + AppUtils.subPath(path), new AlarmMediaPlayer.PlayerListener() {
             @Override
             public void onComplete(AlarmMediaPlayer.PlayBean playBean) {
-                ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path),false);
+                ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path), false);
             }
 
             @Override
             public void onError(AlarmMediaPlayer.PlayBean playBean) {
-                ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path),false);
+                ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path), false);
             }
         });
     }
+
     private void playLocalAudio(final String path) {
         VideoParams videoParams = Player.Params.TypeVideoOfflineRecord().setResourcePath(AppUtils.audiovideoPath + "/" + AppUtils.subPath(path));
         ChatPlayHelper.get().setVideoParam(videoParams);
@@ -906,7 +932,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
                     @Override
                     public void onSuccess(VideoParams param) {
                         super.onSuccess(param);
-                        ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path),true);
+                        ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path), true);
                     }
 
                     @Override
@@ -925,7 +951,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
                         SdkMsgNotifyPlayStatus status = (SdkMsgNotifyPlayStatus) msg;
                         if (status.isStopped()
                                 && !isFinishing()) {
-                            ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path),false);
+                            ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path), false);
                         }
 
                     }
@@ -933,7 +959,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
                     @Override
                     public void onError(VideoParams param, SdkCallback.ErrorInfo errorInfo) {
                         super.onError(param, errorInfo);
-                        ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path),false);
+                        ChatPlayHelper.get().getPlayMap().put(AppUtils.subPath(path), false);
                         showToast(AppUtils.getString(R.string.play_audio_error));
                     }
                 }));
@@ -1030,7 +1056,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
         if (AppUtils.isMeet
                 || AppUtils.isTalk
                 || AppUtils.isVideo) {
-            ChatUtil.get().rspGuanMo(bean.fromUserId, bean.fromUserDomain, bean.fromUserName,bean.sessionID);
+            ChatUtil.get().rspGuanMo(bean.fromUserId, bean.fromUserDomain, bean.fromUserName, bean.sessionID);
             return;
         }
 
@@ -1641,6 +1667,9 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
         if (mVideoWaitAcceptPengding != null) {
             mVideoWaitAcceptPengding.onResume(this);
         }
+        if (ab_title != null) {
+            ab_title.changeMenu(isNoCenter);
+        }
 
         ab_title.onResume();
         pvl_player.onResume();
@@ -1687,12 +1716,12 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
     public void setLocation(MyLocationData data, float direction) {
         if (currentlocation == null)
             return;
-        MyLocationData.Builder builder  = new MyLocationData.Builder()
+        MyLocationData.Builder builder = new MyLocationData.Builder()
                 .accuracy(currentlocation.getRadius())
                 .latitude(data.latitude)
                 .longitude(data.longitude);
-        if (direction != INVALID_DIRECTION){
-            builder .direction(direction);
+        if (direction != INVALID_DIRECTION) {
+            builder.direction(direction);
         }
         currentMapData = builder.build();
         mBaiduMap.setMyLocationData(currentMapData);
@@ -1706,9 +1735,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
 
     @Override
     public void drawCover(final MyCluster data) {
-        System.out.println("ccccccccccccccccccccc drawCover " + data.str + "  " + data.bean);
         clusterManager.addItem(data);
-
     }
 
     @Override
@@ -1721,7 +1748,6 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
         if (data == null) {
             return;
         }
-        System.out.println("ccccccccccccccccccccc deleteCluster " + "  " + data.bean);
         clusterManager.removeItem(data);
     }
 
@@ -1872,7 +1898,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             AppUtils.getMeet_view(this).quitMeet(false);
             return false;
         }
-        if (cvl_capture != null && cvl_capture.getVisibility()==View.VISIBLE){
+        if (cvl_capture != null && cvl_capture.getVisibility() == View.VISIBLE) {
             cvl_capture.stopCapture();
             return false;
         }
@@ -1943,7 +1969,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
                     return;
                 }
                 //如果在采集中,不设置方向,节约下计算
-                if (HYClient.getHYCapture().isCapturing() || HYClient.getHYPlayer().hasVideoRendering()){
+                if (HYClient.getHYCapture().isCapturing() || HYClient.getHYPlayer().hasVideoRendering()) {
                     return;
                 }
                 setLocation(currentMapData, x);
@@ -1953,17 +1979,13 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
 
     public void alert_edit() {
 
-        if (bFirstEncryptTip)
-        {
+        if (bFirstEncryptTip) {
             String enFile = SDKUtils.getStoragePath(HYClient.getContext(), true) + "/Android/data/" + HYClient.getContext().getPackageName() + "/files/" + "rt_sech2.bin";
             File encryptCard = new File(enFile);
-            if (!encryptCard.exists())
-            {
+            if (!encryptCard.exists()) {
                 return;
             }
-        }
-        else
-        {
+        } else {
             return;
         }
 
@@ -1973,7 +1995,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             @Override
             public void onClick(View v) {
                 final String strPsw = passwdEncrypt.getText().toString().trim();
-                if (TextUtils.isEmpty(strPsw)){
+                if (TextUtils.isEmpty(strPsw)) {
                     showToast(AppUtils.getString(R.string.encrypt_card_psw_hint));
                     //cb_encrypt.setChecked(false);
                     return;
@@ -2025,10 +2047,13 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
     @Override
     public void onGetScanDevices(SdpMsgFindLanCaptureDeviceRsp msg) {
         //过滤掉自己
-        if (!TextUtils.isEmpty(HYClient.getSdkOptions().P2P().getP2PNickName()) && HYClient.getSdkOptions().P2P().getP2PNickName().equals(msg.m_strName)){
+        if (!TextUtils.isEmpty(HYClient.getSdkOptions().P2P().getP2PNickName()) && HYClient.getSdkOptions().P2P().getP2PNickName().equals(msg.m_strName)) {
+            mySelf = msg;
+            if (mySelf != null) {
+                tv_user_id.setText(AppUtils.getString(R.string.person_title) + " IP:" + mySelf.m_strIP);
+            }
             return;
         }
-
 
         boolean isContains = false;
 
@@ -2046,6 +2071,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
                         tmp.bean.latLng = new LatLng(31.988401, 118.779742);
                     }
                     isContains = true;
+                    EventBus.getDefault().post(tmp);
                     break;
                 }
             }
@@ -2066,12 +2092,13 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             p2pUsers.add(cluster);
             p2pUsersMap.put(msg.m_strIP, cluster);
             drawCover(cluster);
+            EventBus.getDefault().post(cluster);
             refCluster();
 
             Logger.debug("p2p device " + p2pUsers.size());
         }
 
-        p2pUserTimestamp.put(msg.m_strIP,System.currentTimeMillis());
+        p2pUserTimestamp.put(msg.m_strIP, System.currentTimeMillis());
 
 
     }
@@ -2091,6 +2118,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
         }
         if (findItem != null) {
             p2pUsers.remove(findItem);
+            EventBus.getDefault().post(findItem.bean.p2pDeviceBean.m_strIP);
             p2pUsersMap.remove(findItem.bean.p2pDeviceBean.m_strIP);
             deleteCluster(findItem);
             refCluster();
@@ -2137,7 +2165,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
                     break;
                 }
             }
-            if (findItem != null){
+            if (findItem != null) {
                 findItem.bean.latLng = new LatLng(Double.parseDouble(msg.m_strContent.split(",")[0]),
                         Double.parseDouble(msg.m_strContent.split(",")[1]));
                 p2pUsers.remove(findItem);
@@ -2171,6 +2199,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
 
     @Override
     public void onTalkStopped(SdpMsgCommonUDPMsg sdpMsgCommonUDPMsg) {
+        waitAcceptLayout.isThisIp(sdpMsgCommonUDPMsg.m_strIP);
         AppUtils.getTvvl_view(this).stopTalk(this, sdpMsgCommonUDPMsg.m_strIP);
     }
 
@@ -2181,7 +2210,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             closeMediaViewWhitOutClick();
             present.clearMyCluster();
 
-            HYClient.getSdkOptions().P2P().setCaptureName(AppDatas.Auth().getUserName(), currentlocation == null ? "31.988401,118.779742" : currentlocation.getLatitude() + "," + currentlocation.getLongitude());
+            HYClient.getSdkOptions().P2P().setCaptureName(AppDatas.Auth().getNoCenterUser(), currentlocation == null ? "31.988401,118.779742" : currentlocation.getLatitude() + "," + currentlocation.getLongitude());
             mP2PSample = HYClient.getSdkSamples().P2P();
             mP2PSample.subscribe(this);
             mP2PSample.startP2P();
@@ -2189,17 +2218,17 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
 
             ab_title.changeToP2P();
             tv_ptt.setVisibility(View.GONE);
-            p2pUserCheckDisposable = io.reactivex.Observable.interval(10,TimeUnit.SECONDS)
+            p2pUserCheckDisposable = io.reactivex.Observable.interval(10, TimeUnit.SECONDS)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Consumer<Long>() {
                         @Override
                         public void accept(Long aLong) throws Exception {
-                            Iterator<Map.Entry<String, Long>> iterable=  p2pUserTimestamp.entrySet().iterator();
-                            while (iterable.hasNext()){
+                            Iterator<Map.Entry<String, Long>> iterable = p2pUserTimestamp.entrySet().iterator();
+                            while (iterable.hasNext()) {
                                 Map.Entry<String, Long> item = iterable.next();
-                                if (System.currentTimeMillis() - item.getValue()  > 10 * 1000){
+                                if (System.currentTimeMillis() - item.getValue() > 10 * 1000) {
                                     iterable.remove();
-                                    SdpMsgCommonUDPMsg offlineMsg  = new SdpMsgCommonUDPMsg();
+                                    SdpMsgCommonUDPMsg offlineMsg = new SdpMsgCommonUDPMsg();
                                     offlineMsg.m_strIP = item.getKey();
                                     onGetScanDevicesOffline(offlineMsg);
                                 }
@@ -2222,7 +2251,7 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
         ab_title.hideConnectRetry();
         tv_ptt.setVisibility(View.VISIBLE);
         if (HYClient.getSdkOptions().P2P().isP2PRunning()) {
-            if (p2pUserCheckDisposable != null){
+            if (p2pUserCheckDisposable != null) {
                 p2pUserCheckDisposable.dispose();
                 p2pUserCheckDisposable = null;
             }
@@ -2323,7 +2352,6 @@ public class MainActivity extends AppBaseActivity implements IMainView, BaiduMap
             }
         }
     }
-
 
 
 }

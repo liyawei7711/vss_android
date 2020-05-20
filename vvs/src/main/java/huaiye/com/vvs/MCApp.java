@@ -59,7 +59,6 @@ public class MCApp extends MultiDexApplication {
     ArrayList<AppBaseActivity> allActivity = new ArrayList<>();
 
 
-
     public void addActivity(AppBaseActivity activity) {
         if (!allActivity.contains(activity)) {
             allActivity.add(activity);
@@ -111,14 +110,14 @@ public class MCApp extends MultiDexApplication {
         gotoLogin(false);
     }
 
-    public void gotoLogin(boolean showDialog){
+    public void gotoLogin(boolean showDialog) {
         EventBus.getDefault().post(new KickOutUIObserver.UIKickout());
         SP.putBoolean(STRING_KEY_needload, false);
 
         AuthApi.get().logout();
         Intent loginIntent = new Intent();
-        if (showDialog){
-            loginIntent.putExtra("showKickOutDialog",1);
+        if (showDialog) {
+            loginIntent.putExtra("showKickOutDialog", 1);
         }
         if (topActivity != null) {
             Logger.debug("topActivity not null");
@@ -186,9 +185,6 @@ public class MCApp extends MultiDexApplication {
         Logger.log("VSS init Commit id = " + BuildConfig.commit);
 
     }
-
-
-
 
 
     AppBaseActivity topActivity;

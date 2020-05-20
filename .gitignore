@@ -2,6 +2,7 @@
 \vvs\build
 \.idea
 \build
+\release
 local.properties
 \vvs\*.iml
 *.iml

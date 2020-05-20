@@ -47,6 +47,8 @@ import huaiye.com.vvs.dao.msgs.AppMessages;
 import huaiye.com.vvs.dao.msgs.CallRecordManage;
 import huaiye.com.vvs.ui.talk.TalkVideoActivity;
 
+import static huaiye.com.vvs.common.AppUtils.showToast;
+
 /**
  * author: admin
  * date: 2018/05/16
@@ -232,7 +234,12 @@ public class WaitAcceptLayout extends FrameLayout implements View.OnClickListene
         }
     }
 
-
+    public void isThisIp(String ip){
+        if(udpMsg != null && udpMsg.m_strIP.equals(ip)) {
+            showToast(AppUtils.getString(R.string.duifang_has_end));
+            EventBus.getDefault().post(new WaitViewAllFinish("isThisIp 240"));
+        }
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -278,6 +285,7 @@ public class WaitAcceptLayout extends FrameLayout implements View.OnClickListene
                 EventBus.getDefault().post(new WaitViewAllFinish("waitacceptlayout onclick iv_refuse 271"));
             }else {
                 //无网络情况，音频点击取消
+                HYClient.getSdkSamples().P2P().respTalkRequest(SdkBaseParams.AgreeMode.Refuse, udpMsg);
                 EventBus.getDefault().post(new WaitViewAllFinish("waitacceptlayout onclick iv_refuse 271"));
             }
         }

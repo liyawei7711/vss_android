@@ -28,6 +28,7 @@ import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.dialog.ConfirmDialogFragment;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.dao.msgs.MapMarkBean;
 import huaiye.com.vvs.models.CommonResult;
 import huaiye.com.vvs.models.ModelCallback;
@@ -62,7 +63,7 @@ public class MyMapMarkDialog extends BottomSheetDialogFragment {
         inEditMode = false;
         adapter = new MyMapMarkAdapter(R.layout.item_mark_show, markModelBeans);
         rv = view.findViewById(R.id.rv);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setLayoutManager(new SafeLinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
         rv.addOnItemTouchListener(new OnItemClickListener() {
             @Override

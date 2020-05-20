@@ -21,6 +21,7 @@ import huaiye.com.vvs.bus.CloseMeetActivity;
 import huaiye.com.vvs.bus.CloseTalkVideoActivity;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.rx.RxUtils;
 import huaiye.com.vvs.dao.AppDatas;
 import huaiye.com.vvs.dao.msgs.ChangeUserBean;
@@ -91,7 +92,7 @@ public class ContactsActivity extends AppBaseActivity implements IContactsView {
             }
         });
 
-        rct_view.setLayoutManager(new LinearLayoutManager(this));
+        rct_view.setLayoutManager(new SafeLinearLayoutManager(this));
 
         rct_view.setAdapter(present.getPersonAdapter());
         present.loadPerson(true);

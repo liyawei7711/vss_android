@@ -21,6 +21,7 @@ import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.map.baidu.holder.OfflineMapHolder;
 import huaiye.com.vvs.map.baidu.holder.OfflineMapLastHolder;
 import huaiye.com.vvs.map.baidu.utils.MapListener;
@@ -155,7 +156,7 @@ public class OfflineMapActivity extends AppBaseActivity {
                     }
                 }, adapterLast);
         rv_map_list.setAdapter(adapter);
-        rv_map_list.setLayoutManager(new LinearLayoutManager(this));
+        rv_map_list.setLayoutManager(new SafeLinearLayoutManager(this));
 
 
     }

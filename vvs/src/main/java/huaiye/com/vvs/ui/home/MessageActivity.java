@@ -22,6 +22,7 @@ import huaiye.com.vvs.bus.CreateTalkAndVideo;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.RecycleTouchUtils;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.rx.RxUtils;
 import huaiye.com.vvs.dao.AppDatas;
 import huaiye.com.vvs.dao.msgs.MessageData;
@@ -59,7 +60,7 @@ public class MessageActivity extends AppBaseActivity {
                 })
                 .setTitlText(AppUtils.getString(R.string.notice_title));
 
-        rct_view.setLayoutManager(new LinearLayoutManager(this));
+        rct_view.setLayoutManager(new SafeLinearLayoutManager(this));
         new RecycleTouchUtils().initTouch(new RecycleTouchUtils.ITouchEvent() {
             @Override
             public void onSwiped(final RecyclerView.ViewHolder viewHolder, int direction) {

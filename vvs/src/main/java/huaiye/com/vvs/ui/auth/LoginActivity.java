@@ -30,6 +30,7 @@ import com.ttyy.commonanno.anno.route.BindExtra;
 
 import java.util.ArrayList;
 
+import huaiye.com.vvs.BuildConfig;
 import huaiye.com.vvs.MCApp;
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
@@ -38,6 +39,7 @@ import huaiye.com.vvs.common.ErrorMsg;
 import huaiye.com.vvs.common.SP;
 import huaiye.com.vvs.common.dialog.LogicDialog;
 import huaiye.com.vvs.dao.AppDatas;
+import huaiye.com.vvs.dao.auth.AppAuth;
 import huaiye.com.vvs.models.ModelApis;
 import huaiye.com.vvs.models.ModelCallback;
 import huaiye.com.vvs.models.auth.bean.AuthUser;
@@ -106,7 +108,7 @@ public class LoginActivity extends AppBaseActivity {
 
     @Override
     public void doInitDelay() {
-        if (showKickOutDialog == 1){
+        if (showKickOutDialog == 1) {
             final LogicDialog logicDialog = new LogicDialog(this);
             logicDialog.setCancelable(false);
             logicDialog.setCanceledOnTouchOutside(false);
@@ -120,7 +122,7 @@ public class LoginActivity extends AppBaseActivity {
         }
     }
 
-    @OnClick({R.id.ll_login, R.id.btn_ip_set, R.id.btn_nick_meet})
+    @OnClick({R.id.ll_login, R.id.btn_ip_set, R.id.btn_nick_meet, R.id.btn_wuzhongxin})
     void onBtnClicked(View view) {
         if (view_load.getVisibility() == View.VISIBLE) {
             showToast(AppUtils.getString(R.string.is_loading));
@@ -139,7 +141,32 @@ public class LoginActivity extends AppBaseActivity {
             case R.id.btn_nick_meet:
                 // 匿名入会
                 break;
+            case R.id.btn_wuzhongxin:
+                // 无中心
+                if (BuildConfig.DEBUG) {
+                    AppAuth.get().setNoCenterUser("lyw " + System.currentTimeMillis());
+                } else {
+                    if (TextUtils.isEmpty(edt_account.getText())) {
+                        showToast(AppUtils.getString(R.string.count_empty));
+                        return;
+                    }
+                    AppAuth.get().setNoCenterUser(edt_account.getText().toString());
+                }
+
+                jumpToMain(true);
+                break;
         }
+    }
+
+    private void jumpToMain(boolean isNoCenter) {
+
+        AppUtils.isMeet = false;
+        AppUtils.isTalk = false;
+        AppUtils.isVideo = false;
+        Intent intent = new Intent(getSelf(), MainActivity.class);
+        intent.putExtra("isNoCenter", isNoCenter);
+        startActivity(intent);
+        finish();
     }
 
     void login() {
@@ -161,11 +188,7 @@ public class LoginActivity extends AppBaseActivity {
 
                     @Override
                     public void onSuccess(AuthUser authUser) {
-                        AppUtils.isMeet = false;
-                        AppUtils.isTalk = false;
-                        AppUtils.isVideo = false;
-                        startActivity(new Intent(getSelf(), MainActivity.class));
-                        finish();
+                        jumpToMain(false);
 //                        encryptInit();
                     }
 
@@ -243,7 +266,7 @@ public class LoginActivity extends AppBaseActivity {
 //    }
 
 
-    public static void encryptInit(final String psw, final SdkCallback<SdpMessageCmRegisterUserRsp> resp){
+    public static void encryptInit(final String psw, final SdkCallback<SdpMessageCmRegisterUserRsp> resp) {
         if (SP.getInteger(STRING_KEY_encrypt, -1) == 0) {
             HYClient.getModule(ApiEncrypt.class).encryptRegister(SdkParamsCenter.Encrypt.EncryptRegister(), new SdkCallback<SdpMessageCmRegisterUserRsp>() {
                 @Override
@@ -276,30 +299,30 @@ public class LoginActivity extends AppBaseActivity {
 
                                                 @Override
                                                 public void onError(ErrorInfo error) {
-                                                    AppUtils.showToast("绑定失败"+error.getMessage());
+                                                    AppUtils.showToast("绑定失败" + error.getMessage());
                                                     resp.onError(error);
                                                 }
                                             });
                                         }
-                                    },2000);
+                                    }, 2000);
 
                                 }
 
                                 @Override
                                 public void onError(ErrorInfo error) {
-                                    AppUtils.showToast("初始化失败"+error.getMessage());
+                                    AppUtils.showToast("初始化失败" + error.getMessage());
                                     resp.onError(error);
 
                                 }
                             });
                         }
-                    },2000);
+                    }, 2000);
 
                 }
 
                 @Override
                 public void onError(ErrorInfo error) {
-                    AppUtils.showToast("加密注册失败"+error.getMessage());
+                    AppUtils.showToast("加密注册失败" + error.getMessage());
                     resp.onError(error);
                 }
             });

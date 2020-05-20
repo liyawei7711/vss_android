@@ -15,6 +15,7 @@ import butterknife.BindView;
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteViewHolder;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.map.baidu.utils.MapListener;
 import huaiye.com.vvs.models.map.bean.OfflineMapBean;
 
@@ -50,7 +51,7 @@ public class OfflineMapHolder extends LiteViewHolder {
         iv_download.setOnClickListener(ocl);
         itemView.setOnClickListener(ocl);
 
-        rv_map_city.setLayoutManager(new LinearLayoutManager(context));
+        rv_map_city.setLayoutManager(new SafeLinearLayoutManager(context));
     }
 
     @Override

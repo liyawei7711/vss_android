@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.ui.home.present.ContactsChoosePresent;
 import huaiye.com.vvs.ui.home.view.IContactsView;
 
@@ -76,7 +77,7 @@ public class ContactsChooseActivity extends AppBaseActivity implements IContacts
         lp = (RelativeLayout.LayoutParams) view_float.getLayoutParams();
         id = R.id.rbtn_person;
 
-        rct_view.setLayoutManager(new LinearLayoutManager(this));
+        rct_view.setLayoutManager(new SafeLinearLayoutManager(this));
         rct_view.setAdapter(present.getPersonAdapter());
         present.loadPerson(true);
         present.loadDevice(true);

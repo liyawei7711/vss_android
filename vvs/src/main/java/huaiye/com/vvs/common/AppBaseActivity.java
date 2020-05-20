@@ -309,17 +309,17 @@ public abstract class AppBaseActivity extends FragmentActivity {//implements Mes
 
                 break;
             case Connecting:
-                if (HYClient.getSdkOptions().P2P().isSupportP2P()) {
-                    if (HYClient.getSdkOptions().P2P().isP2PRunning()) {
-                        return;
-                    }
-                    count_connecting++;
-                    if (count_connecting > P2P_MAX_TRY) {
-                        startP2P();
-                    } else {
-                        p2pConnectRetry(P2P_MAX_TRY - count_connecting + 1);
-                    }
-                }
+//                if (HYClient.getSdkOptions().P2P().isSupportP2P()) {
+//                    if (HYClient.getSdkOptions().P2P().isP2PRunning()) {
+//                        return;
+//                    }
+//                    count_connecting++;
+//                    if (count_connecting > P2P_MAX_TRY) {
+//                        startP2P();
+//                    } else {
+//                        p2pConnectRetry(P2P_MAX_TRY - count_connecting + 1);
+//                    }
+//                }
 
                 if (!AppUtils.isHide && !HYClient.getSdkOptions().P2P().isSupportP2P())
                     showToast(AppUtils.getString(R.string.has_server_connecting));

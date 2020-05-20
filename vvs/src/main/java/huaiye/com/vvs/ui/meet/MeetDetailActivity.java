@@ -23,6 +23,7 @@ import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.ErrorMsg;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.dao.AppDatas;
 import huaiye.com.vvs.ui.meet.views.MeetCreateHeaderView;
 import ttyy.com.recyclerexts.base.EXTRecyclerAdapter;
@@ -78,7 +79,7 @@ public class MeetDetailActivity extends AppBaseActivity {
     @Override
     public void doInitDelay() {
         mZeusLoadView.loadingText(AppUtils.getString(R.string.is_loading_file)).setLoading();
-        rct_view.setLayoutManager(new LinearLayoutManager(this));
+        rct_view.setLayoutManager(new SafeLinearLayoutManager(this));
         adapter = new EXTRecyclerAdapter<CGetMeetingInfoRsp.UserInfo>(R.layout.item_meetcreate_member) {
             @Override
             public void onBindViewHolder(EXTViewHolder extViewHolder, int i, CGetMeetingInfoRsp.UserInfo contactData) {

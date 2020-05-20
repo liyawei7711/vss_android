@@ -139,8 +139,8 @@ public class MarkPointLayout extends FrameLayout implements View.OnClickListener
                         if (data.isMeeting()) {
                             currentInfo.bean.personModelBean.nStatus = PersonModelBean.STATUS_ONLINE_MEETING;
                         }
-                        if (data.isTrunkSpeaking()){
-                            currentInfo.bean.personModelBean.nStatus  = PersonModelBean.STATUS_ONLINE_TRUNK_SPEAKING;
+                        if (data.isTrunkSpeaking()) {
+                            currentInfo.bean.personModelBean.nStatus = PersonModelBean.STATUS_ONLINE_TRUNK_SPEAKING;
                         }
                     } else {
                         currentInfo.bean.personModelBean.nStatus = PersonModelBean.STATUS_OFFLINE;
@@ -235,8 +235,8 @@ public class MarkPointLayout extends FrameLayout implements View.OnClickListener
                 lat = ((MainActivity) getContext()).currentMapData.latitude;
                 lng = ((MainActivity) getContext()).currentMapData.longitude;
             }
-            double showLatitude  = BigDecimal.valueOf(currentInfo.bean.latLng.latitude).setScale(6,BigDecimal.ROUND_DOWN).doubleValue();
-            double showLongitude = BigDecimal.valueOf(currentInfo.bean.latLng.longitude).setScale(6,BigDecimal.ROUND_DOWN).doubleValue();
+            double showLatitude = BigDecimal.valueOf(currentInfo.bean.latLng.latitude).setScale(6, BigDecimal.ROUND_DOWN).doubleValue();
+            double showLongitude = BigDecimal.valueOf(currentInfo.bean.latLng.longitude).setScale(6, BigDecimal.ROUND_DOWN).doubleValue();
 
             if (currentInfo.bean.personModelBean != null) {
                 tv_phone.setVisibility(VISIBLE);
@@ -273,7 +273,6 @@ public class MarkPointLayout extends FrameLayout implements View.OnClickListener
                 tv_zhihui.setVisibility(GONE);
 
                 tv_type_info.setText(currentInfo.bean.deviceBean.strChannelName + "(ID:" + currentInfo.bean.deviceBean.strChannelCode + ")");
-
 
 
 //                tv_lat.setText(AppUtils.getString(R.string.weidu) + currentInfo.bean.latLng.latitude + "," + AppUtils.getString(R.string.jingdu) + currentInfo.bean.latLng.longitude);
@@ -352,6 +351,12 @@ public class MarkPointLayout extends FrameLayout implements View.OnClickListener
 
     @Override
     public void onClick(final View view) {
+        if (((MainActivity) getContext()).isNoCenter && (((MainActivity) getContext()).waitAcceptLayout.getVisibility() == VISIBLE ||
+                ((MainActivity) getContext()).cvl_capture.getVisibility() == VISIBLE ||
+                ((MainActivity) getContext()).pvl_player.getVisibility() == VISIBLE ||
+                AppUtils.isMeet || AppUtils.isTalk || AppUtils.isVideo)) {
+            return;
+        }
         if (view.getId() == R.id.tv_zhihui) {
             if (currentInfo != null) {
                 if (currentInfo.bean.personModelBean != null) {

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.rx.RxUtils;
 import huaiye.com.vvs.common.views.PermissionUtils;
 import huaiye.com.vvs.common.views.WindowManagerUtils;
@@ -93,7 +94,7 @@ public class BroadCastMsgLayout extends FrameLayout {
                         }
                     }
                 }, "");
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        SafeLinearLayoutManager layoutManager = new SafeLinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         rv_list.setLayoutManager(layoutManager);
         rv_list.setAdapter(adapter);

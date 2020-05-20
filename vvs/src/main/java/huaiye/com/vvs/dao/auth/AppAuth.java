@@ -54,6 +54,13 @@ public class AppAuth {
         put(SIE_HTTP_PORT, user.nSieHttpPort);
     }
 
+    public void setNoCenterUser(String user) {
+        put("noCenterUser", user);
+    }
+
+    public String getNoCenterUser() {
+        return get("noCenterUser");
+    }
 
     public String getToken() {
         return get("strToken");
@@ -76,11 +83,19 @@ public class AppAuth {
     }
 
     public long getUserID() {
-        return Long.parseLong(get("strUserID"));
+        try {
+            return Long.parseLong(get("strUserID"));
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     public int getPriority() {
-        return SP.getInteger("nPriority", 0);
+        try {
+            return SP.getInteger("nPriority", 0);
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     public String getUserName() {
@@ -104,23 +119,28 @@ public class AppAuth {
     }
 
     public int getSieHttpPort() {
-        return Integer.parseInt(get(SIE_HTTP_PORT, "8000"));
-    }
-
-
-    public void setEncryptPsw(String encryptPsw){
-        String strUserID = get("strUserID");
-        if (TextUtils.isEmpty(strUserID)){
-            return ;
+        try{
+            return Integer.parseInt(get(SIE_HTTP_PORT, "8000"));
+        } catch (Exception e){
+            return 8000;
         }
-        put(strUserID+"_encrypt_psw",encryptPsw);
     }
-    public String getEncryptPsw(){
+
+
+    public void setEncryptPsw(String encryptPsw) {
         String strUserID = get("strUserID");
-        if (TextUtils.isEmpty(strUserID)){
+        if (TextUtils.isEmpty(strUserID)) {
+            return;
+        }
+        put(strUserID + "_encrypt_psw", encryptPsw);
+    }
+
+    public String getEncryptPsw() {
+        String strUserID = get("strUserID");
+        if (TextUtils.isEmpty(strUserID)) {
             return "";
         }
-        String psw = get(strUserID+"_encrypt_psw");
+        String psw = get(strUserID + "_encrypt_psw");
         return "12345678";
     }
 

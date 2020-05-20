@@ -237,6 +237,9 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="dlNuyRt5oV0PXM0b6DRoAec3E5cUxWqr" /> <!-- http://lbsyun.baidu.com/apiconsole/key -->
+        <meta-data
+            android:name="api_key"
+            android:value="Eb15pnREY4gKQJ9m2gwMyfwZMnuhiCqwYJ47gCSjEZ"/>
         <!-- 2SApsBELro3HsawhxcnjI0fVTchTMdvO -->
         <!-- BbNFnkDS7jUnQ5MlQ5hixHGvIwDiWy9G -->
         <activity

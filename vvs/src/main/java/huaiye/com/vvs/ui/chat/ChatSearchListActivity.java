@@ -18,6 +18,7 @@ import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.dao.msgs.ChatMessages;
 import huaiye.com.vvs.dao.msgs.VssMessageBean;
 import huaiye.com.vvs.dao.msgs.VssMessageListBean;
@@ -82,7 +83,7 @@ public class ChatSearchListActivity extends AppBaseActivity implements View.OnCl
                         adapter.notifyDataSetChanged();
                     }
                 }, "");
-        message_list.setLayoutManager(new LinearLayoutManager(this));
+        message_list.setLayoutManager(new SafeLinearLayoutManager(this));
         message_list.setAdapter(adapter);
 
     }

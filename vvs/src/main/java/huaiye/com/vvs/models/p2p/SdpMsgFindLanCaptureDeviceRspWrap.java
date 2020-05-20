@@ -12,7 +12,7 @@ public class SdpMsgFindLanCaptureDeviceRspWrap implements Serializable {
 
     public SdpMsgFindLanCaptureDeviceRspWrap(SdpMsgFindLanCaptureDeviceRsp rsp){
         this.m_strIP = rsp.m_strIP;
-        this.m_strName = rsp.m_strIP;
+        this.m_strName = rsp.m_strName;
         this.m_strInfo = rsp.m_strInfo;
         this.m_nCaptureState = rsp.m_nCaptureState;
     }
@@ -20,7 +20,7 @@ public class SdpMsgFindLanCaptureDeviceRspWrap implements Serializable {
     public SdpMsgFindLanCaptureDeviceRsp convert(){
         SdpMsgFindLanCaptureDeviceRsp rsp = new SdpMsgFindLanCaptureDeviceRsp();
         rsp.m_strIP = this.m_strIP;
-        rsp.m_strName = this.m_strIP;
+        rsp.m_strName = this.m_strName;
         rsp.m_strInfo = this.m_strInfo;
         rsp.m_nCaptureState = this.m_nCaptureState;
         return rsp;

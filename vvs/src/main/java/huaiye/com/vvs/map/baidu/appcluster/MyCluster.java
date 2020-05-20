@@ -73,7 +73,11 @@ public class MyCluster implements ClusterItem {
             return BitmapDescriptorFactory
                     .fromResource(R.drawable.icon_openmap_focuse_mark);
         } else if (bean.p2pDeviceBean != null) {
-            return BitmapDescriptorFactory.fromResource(R.drawable.kongxian);
+            if(bean.p2pDeviceBean.m_nCaptureState == 0) {
+                return BitmapDescriptorFactory.fromResource(R.drawable.kongxian);
+            } else {
+                return BitmapDescriptorFactory.fromResource(R.drawable.manglu);
+            }
         } else {
             return BitmapDescriptorFactory
                     .fromResource(R.drawable.icon_gcoding);

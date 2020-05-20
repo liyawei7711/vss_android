@@ -33,6 +33,7 @@ import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseFragment;
 import huaiye.com.vvs.common.ErrorMsg;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.ui.meet.viewholder.MemberHolder;
 
 /**
@@ -84,7 +85,7 @@ public class MeetMembersNewFragment extends AppBaseFragment {
         super.onViewCreated(view, savedInstanceState);
         getNavigate().setVisibility(View.GONE);
 
-        rct_view.setLayoutManager(new LinearLayoutManager(getContext()));
+        rct_view.setLayoutManager(new SafeLinearLayoutManager(getContext()));
 
         MemberHolder.isMeetStarter = isMeetStarter;
         MemberHolder.handUser.clear();

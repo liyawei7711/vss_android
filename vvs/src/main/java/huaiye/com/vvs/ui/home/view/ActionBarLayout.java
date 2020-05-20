@@ -7,7 +7,6 @@ import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -72,6 +71,7 @@ import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
 import huaiye.com.vvs.common.recycle.LiteViewHolder;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.rx.RxUtils;
 import huaiye.com.vvs.common.views.DropDownAnimator;
 import huaiye.com.vvs.common.views.pickers.itemdivider.SimpleItemDecoration;
@@ -187,7 +187,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
         tv_enter_p2p.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onMenuItemClickListener != null){
+                if (onMenuItemClickListener != null) {
                     onMenuItemClickListener.onEnterP2pClick();
                 }
             }
@@ -196,7 +196,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
             @Override
             public void onClick(View v) {
 
-                if (onMenuItemClickListener != null){
+                if (onMenuItemClickListener != null) {
                     onMenuItemClickListener.onLeftMenuClick();
                 }
             }
@@ -204,23 +204,24 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
         tv_right.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HYClient.getSdkOptions().P2P().isP2PRunning()){
+                if (HYClient.getSdkOptions().P2P().isP2PRunning()) {
                     showToast(AppUtils.getString(R.string.p2p_is_running_and_this_function_not_support));
                     return;
                 }
-                if (onMenuItemClickListener != null){
+                if (onMenuItemClickListener != null) {
                     onMenuItemClickListener.onChatMenuClick();
                 }
             }
         });
+
         tv_contact.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (HYClient.getSdkOptions().P2P().isP2PRunning()){
-                    showToast(AppUtils.getString(R.string.p2p_is_running_and_this_function_not_support));
-                    return;
-                }
-                if (onMenuItemClickListener != null){
+//                if (HYClient.getSdkOptions().P2P().isP2PRunning()){
+//                    showToast(AppUtils.getString(R.string.p2p_is_running_and_this_function_not_support));
+//                    return;
+//                }
+                if (onMenuItemClickListener != null) {
                     onMenuItemClickListener.onContactMenuClick();
                 }
             }
@@ -248,7 +249,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
                     }
                 }, "");
 
-        rv_list.setLayoutManager(new LinearLayoutManager(context));
+        rv_list.setLayoutManager(new SafeLinearLayoutManager(context));
         rv_list.setAdapter(adapter);
         rv_list.addItemDecoration(new SimpleItemDecoration(getContext(), ActivityCompat.getColor(getContext(), R.color.gray4e535b), 1));
         ll_middle.setOnClickListener(this);
@@ -265,18 +266,18 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
         SdkCaller callerChannelChange = HYClient.getModule(ApiTalk.class).observerTrunkChannelChange(new CallbackTrunkChannelNotify() {
             @Override
             public void onSuccess(CNotifyTrunkChannelSpeakerStatus resp) {
-                Logger.debug(TAG+ " " + "ApiTalk onSuccess currentBean" + currentBean == null ? " null" : " not null");
+                Logger.debug(TAG + " " + "ApiTalk onSuccess currentBean" + currentBean == null ? " null" : " not null");
             }
 
             @Override
             public void onError(ErrorInfo error) {
-                Logger.debug(TAG+ " " + "ApiTalk onError " + error.toString());
+                Logger.debug(TAG + " " + "ApiTalk onError " + error.toString());
 
             }
 
             @Override
             public void notifyTrunkChannelMyselfSpeakStatus(CNotifyTrunkChannelSpeakerStatus info) {
-                Logger.debug(TAG+ " " + "ApiTalk notifyTrunkChannelUserPlaySpeak " + JniIntf.GetSystemProperty(JniIntf.SYSTEM_PROPERTY_ENABLE_RESAMPLE));
+                Logger.debug(TAG + " " + "ApiTalk notifyTrunkChannelUserPlaySpeak " + JniIntf.GetSystemProperty(JniIntf.SYSTEM_PROPERTY_ENABLE_RESAMPLE));
                 if (info.isSpeakFinish()) {
                     setTrunkChannelIdle();
                     stopMyselfSpeak();
@@ -296,15 +297,15 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
             @Override
             public void notifyTrunkChannelUserPlaySpeakSet(CNotifyTrunkChannelUserPlaySpeakSet status) {
                 Logger.debug(TAG + " ApiTalk notifyTrunkChannelUserPlaySpeakSet " + status);
-                if (status == null || currentBean == null ){
+                if (status == null || currentBean == null) {
                     return;
                 }
-                if (status.needStart()){
-                    startPlayVoice(status,currentBean);
-                }else {
+                if (status.needStart()) {
+                    startPlayVoice(status, currentBean);
+                } else {
 
                     setTrunkChannelIdle();
-                    if (!TextUtils.isEmpty(status.strSpeakUserTokenID)){
+                    if (!TextUtils.isEmpty(status.strSpeakUserTokenID)) {
                         String userID = status.strSpeakUserTokenID.substring(0, status.strSpeakUserTokenID.lastIndexOf("_"));
                         if (status.strSpeakUserDomainCode.equals(AppDatas.Auth().getDomainCode())
                                 && (AppDatas.Auth().getUserID() + "").equals(userID))
@@ -315,7 +316,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
 
             @Override
             public void notifyUserKickTrunkChannel(CNotifyUserKickTrunkChannel user) {
-                Logger.debug(TAG+ " " + " ApiTalk notifyUserKickTrunkChannel");
+                Logger.debug(TAG + " " + " ApiTalk notifyUserKickTrunkChannel");
                 if (currentBean != null && currentBean.nTrunkChannelID == user.nTrunkChannelID) {
                     currentSpeak = null;
                     showToast(AppUtils.getString(R.string.kitout_group));
@@ -371,32 +372,30 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     }
 
 
-
-
     private void startPlayVoice(CNotifyTrunkChannelUserPlaySpeakSet status, TrunkChannelBean currentChannelBean) {
 
         tv_msg.setText(HYClient.getSdkOptions().User().getUserTokenId().equals(status.strSpeakUserTokenID + "") ?
                 AppUtils.getString(R.string.me_talk_ing) : status.strSpeakUserName + AppUtils.getString(R.string.person_talk_ing));
 
         //新来的说话者和正在说的重复了,就不需要做什么了
-        if (currentSpeak != null && currentSpeak.strSpeakUserTokenID.equals(status.strSpeakUserTokenID)){
-            Logger.debug(TAG+ " " + " ApiTalk new speak same  with currentSpeak ");
+        if (currentSpeak != null && currentSpeak.strSpeakUserTokenID.equals(status.strSpeakUserTokenID)) {
+            Logger.debug(TAG + " " + " ApiTalk new speak same  with currentSpeak ");
             return;
         }
 
         //把当前播放的都记下来,停止播放的时候要置为空
         currentSpeak = status;
         if (AppUtils.isVideo || AppUtils.isMeet || AppUtils.isTalk) {
-            Logger.debug(TAG+ " " + " ApiTalk notifyTrunkChannelUserPlaySpeakSet isPlay video  ");
+            Logger.debug(TAG + " " + " ApiTalk notifyTrunkChannelUserPlaySpeakSet isPlay video  ");
             return;
         }
 
         if (status.strSpeakUserTokenID.equals(HYClient.getSdkOptions().User().getUserTokenId())) {
-            Logger.debug(TAG+ " "  + " ApiTalk strSpeakUserTokenID is mySelft");
+            Logger.debug(TAG + " " + " ApiTalk strSpeakUserTokenID is mySelft");
             return;
         }
 
-        if (HYClient.getSdkOptions().User().getUserTokenId().equals(status.strSpeakUserTokenID + "")){
+        if (HYClient.getSdkOptions().User().getUserTokenId().equals(status.strSpeakUserTokenID + "")) {
             //自己说话 不需要播放自己了
             return;
         }
@@ -416,7 +415,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
                 .setStatusCallback(new VideoStatusCallback() {
                     @Override
                     public void onVideoStatusChanged(VideoParams videoParams, SdpMessageBase sdpMessageBase) {
-                        Logger.debug(TAG+ " " +  " ApiTalk notifyTrunkChannelUserPlaySpeakSet setStatusCallback");
+                        Logger.debug(TAG + " " + " ApiTalk notifyTrunkChannelUserPlaySpeakSet setStatusCallback");
                         //收到对方停止说话的消息 就停止本地播放
                         if (sdpMessageBase instanceof SdkMsgNotifyPlayStatus && ((SdkMsgNotifyPlayStatus) sdpMessageBase).isStopped()) {
                             closeReqStatus("329");
@@ -428,16 +427,16 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
                     @Override
                     public void onSuccess(VideoParams param) {
                         showToast(AppUtils.getString(R.string.player_success));
-                        Logger.debug(TAG+ " " + " ApiTalk notifyTrunkChannelUserPlaySpeakSet setStartCallback  success");
+                        Logger.debug(TAG + " " + " ApiTalk notifyTrunkChannelUserPlaySpeakSet setStartCallback  success");
                     }
 
                     @Override
                     public void onError(VideoParams param, SdkCallback.ErrorInfo errorInfo) {
-                        Logger.debug(TAG+ " " + " ApiTalk notifyTrunkChannelUserPlaySpeakSet setStartCallback  onError " + errorInfo.toString());
+                        Logger.debug(TAG + " " + " ApiTalk notifyTrunkChannelUserPlaySpeakSet setStartCallback  onError " + errorInfo.toString());
                     }
                 });
 
-        Logger.debug( TAG +" ApiTalk notifyTrunkChannelUserPlaySpeakSet will start " + mapVideo.get(currentChannelBean.nTrunkChannelID).getSessionID());
+        Logger.debug(TAG + " ApiTalk notifyTrunkChannelUserPlaySpeakSet will start " + mapVideo.get(currentChannelBean.nTrunkChannelID).getSessionID());
 
         initSound();
         HYClient.getHYAudioMgr().from(getContext()).setSpeakerphoneOn(true);
@@ -446,7 +445,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
 
 
     private void closePlayer(int id) {
-        Logger.debug(TAG+ "closePlayer start mapVideoSize = " + mapVideo.size());
+        Logger.debug(TAG + "closePlayer start mapVideoSize = " + mapVideo.size());
         closeReqStatus("375");
         if (id == -1) {
             closeAllPlayer();
@@ -457,7 +456,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
             closeSpeakLoud();
         }
 
-        Logger.debug(TAG+ " " + "closePlayer end mapVideoSize = " + mapVideo.size());
+        Logger.debug(TAG + " " + "closePlayer end mapVideoSize = " + mapVideo.size());
 
     }
 
@@ -474,17 +473,17 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
      * 暂停所有的播放
      */
     private void pauseAllPlayer() {
-        Logger.debug(TAG+ " " +  "closeAllPlayer  start mapVideoSize = " + mapVideo.size());
+        Logger.debug(TAG + " " + "closeAllPlayer  start mapVideoSize = " + mapVideo.size());
         for (Map.Entry<Integer, TrunkChannelReal> entry : mapVideo.entrySet()) {
             TrunkChannelReal videoParams = entry.getValue();
             doClosePlayer(videoParams);
         }
         mapVideo.clear();
         closeSpeakLoud();
-        Logger.debug(TAG+ " "  + "closeAllPlayer  end mapVideoSize = " + mapVideo.size());
+        Logger.debug(TAG + " " + "closeAllPlayer  end mapVideoSize = " + mapVideo.size());
     }
 
-    private void doClosePlayer(TrunkChannelReal videoParams){
+    private void doClosePlayer(TrunkChannelReal videoParams) {
         if (videoParams != null) {
             videoParams.setStartPlayStatus(true);
             HYClient.getHYPlayer().stopPlay(new SdkCallback<VideoParams>() {
@@ -503,6 +502,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
 
     /**
      * 接受邀请加入新的频道
+     *
      * @param bean
      */
     private void acceptNewChannel(TrunkChannelBean bean) {
@@ -510,7 +510,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
         //2 停止当前播放
         //3 加入新的频道
         //4 更改ui
-        Logger.debug(TAG+ " acceptNewChannel " + bean.nTrunkChannelID + " " + bean.strTrunkChannelName);
+        Logger.debug(TAG + " acceptNewChannel " + bean.nTrunkChannelID + " " + bean.strTrunkChannelName);
         closeReqStatus("888");
         stopMyselfSpeak();
         TrunkChannelBean willJoinChannel = null;
@@ -536,7 +536,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
         doJoinChannel(willJoinChannel, new SdkCallback<CJoinTrunkChannelRsp>() {
             @Override
             public void onSuccess(CJoinTrunkChannelRsp cJoinTrunkChannelRsp) {
-                Logger.debug(TAG+ " acceptNewChannel success " + cJoinTrunkChannelRsp.toString());
+                Logger.debug(TAG + " acceptNewChannel success " + cJoinTrunkChannelRsp.toString());
                 lastChannelBean = currentBean;
                 currentBean = finalWillJoinChannel;
                 showToast(AppUtils.getString(R.string.join_deal) + currentBean.strTrunkChannelName + AppUtils.getString(R.string.join_success));
@@ -556,14 +556,15 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
 
     /**
      * 别的语音对讲,视频对讲结束后,继续当前的播放
+     *
      * @param data
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onResumePlay(final FinishDiaoDu data) {
-        if (currentSpeak != null && currentBean != null ) {
-            if(currentSpeak.needStart()){
-                startPlayVoice(currentSpeak,currentBean);
-            }else {
+        if (currentSpeak != null && currentBean != null) {
+            if (currentSpeak.needStart()) {
+                startPlayVoice(currentSpeak, currentBean);
+            } else {
                 setTrunkChannelIdle();
             }
         }
@@ -571,7 +572,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onNetStatusChange(NetStatusChange statusChange) {
-        Logger.debug(TAG+  "onNetStatusChange ");
+        Logger.debug(TAG + "onNetStatusChange ");
         if (statusChange.data == SdkBaseParams.ConnectionStatus.Connected && currentBean != null) {
             ensureChannelInfo(currentBean);
         }
@@ -582,7 +583,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
         if (data == null) {
             return;
         }
-        Logger.debug(TAG+ " ChannelInvistor " + data.channel);
+        Logger.debug(TAG + " ChannelInvistor " + data.channel);
 
         final TrunkChannelBean willJoinChannel = new TrunkChannelBean();
         willJoinChannel.nTrunkChannelID = data.channel.nTrunkChannelID;
@@ -614,11 +615,10 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
         showPoint(bean.has);
     }
 
-    public void onResume(){
+    public void onResume() {
         showPoint(VssMessageListMessages.get().getMessagesUnRead());
 
     }
-
 
 
     private void showPoint(boolean value) {
@@ -626,19 +626,15 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     }
 
 
-
-
-    private void doJoinChannel(final TrunkChannelBean newChannelBean,SdkCallback<CJoinTrunkChannelRsp> callback){
-        if (newChannelBean  == null){
+    private void doJoinChannel(final TrunkChannelBean newChannelBean, SdkCallback<CJoinTrunkChannelRsp> callback) {
+        if (newChannelBean == null) {
             return;
         }
         HYClient.getModule(ApiTalk.class).joinTrunkChannel(SdkParamsCenter.Talk.JoinTrunkChannel()
-                        .setnTrunkChannelID(newChannelBean.nTrunkChannelID)
-                        .setnPriority(AppDatas.Auth().getPriority())
-                        .setStrTrunkChannelDomainCode(newChannelBean.strTrunkChannelDomainCode),callback);
+                .setnTrunkChannelID(newChannelBean.nTrunkChannelID)
+                .setnPriority(AppDatas.Auth().getPriority())
+                .setStrTrunkChannelDomainCode(newChannelBean.strTrunkChannelDomainCode), callback);
     }
-
-
 
 
     /**
@@ -681,7 +677,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     }
 
 
-    private void stopPTTAlarm(){
+    private void stopPTTAlarm() {
         new RxUtils<>().doDelayOn(500, new RxUtils.IMainDelay() {
             @Override
             public void onMainDelay() {
@@ -689,6 +685,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
             }
         });
     }
+
     /**
      * 本机发言
      */
@@ -756,7 +753,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     private void queryChannelData() {
         HYClient.getModule(ApiTalk.class).queryTrunkChannel(SdkParamsCenter.Talk.QueryTrunkChannel()
                         .setStrTcUserID(AppAuth.get().getUserID() + "")
-                        .setnTrunkChannelType(TrunkChannelBean.CHANNLE_TYPE_DEFAULT|TrunkChannelBean.CHANNLE_TYPE_STATIC|TrunkChannelBean.CHANNLE_TYPE_TMP_ING)
+                        .setnTrunkChannelType(TrunkChannelBean.CHANNLE_TYPE_DEFAULT | TrunkChannelBean.CHANNLE_TYPE_STATIC | TrunkChannelBean.CHANNLE_TYPE_TMP_ING)
                         .setStrTcUserDomainCode(AppAuth.get().getDomainCode())
                         .setnSize(9999),
                 new SdkCallback<CQueryTrunkChannelListRsp>() {
@@ -767,7 +764,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
                             if (trunkChannelBean.nTrunkChannelType != TrunkChannelBean.CHANNLE_TYPE_TMP_FINISH) {
                                 datas.add(trunkChannelBean);
                             }
-                            if (trunkChannelBean.nTrunkChannelType == TrunkChannelBean.CHANNLE_TYPE_DEFAULT){
+                            if (trunkChannelBean.nTrunkChannelType == TrunkChannelBean.CHANNLE_TYPE_DEFAULT) {
                                 defaultChannelBean = trunkChannelBean;
                             }
                         }
@@ -812,7 +809,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
      * @param currentBean
      */
     private void ensureChannelInfo(final TrunkChannelBean currentBean) {
-        Logger.debug(TAG+ " ensureChannelInfo " + currentBean.nTrunkChannelID + " " +currentBean.strTrunkChannelName);
+        Logger.debug(TAG + " ensureChannelInfo " + currentBean.nTrunkChannelID + " " + currentBean.strTrunkChannelName);
         HYClient.getModule(ApiTalk.class)
                 .getTrunkChannelInfo(SdkParamsCenter.Talk.GetTrunkChannelInfo()
                                 .setnTrunkChannelID(currentBean.nTrunkChannelID)
@@ -820,7 +817,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
                         new SdkCallback<CGetTrunkChannelInfoRsp>() {
                             @Override
                             public void onSuccess(CGetTrunkChannelInfoRsp cGetTrunkChannelInfoRsp) {
-                                Logger.debug(TAG+" ensureChannelInfo success " + cGetTrunkChannelInfoRsp.toString());
+                                Logger.debug(TAG + " ensureChannelInfo success " + cGetTrunkChannelInfoRsp.toString());
                                 //频道状态
                                 //0：空闲
                                 //1：抢占发言中
@@ -838,7 +835,7 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
                                                 tmpUser.strSpeakUserDomainCode = channelUser.strTcUserDomainCode;
                                                 tmpUser.strSpeakUserTokenID = channelUser.strTcUserTokenID;
                                                 tmpUser.strSpeakUserName = channelUser.strTcUserName;
-                                                startPlayVoice(tmpUser,currentBean);
+                                                startPlayVoice(tmpUser, currentBean);
                                             }
                                         }
                                     }
@@ -858,12 +855,12 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     /**
      * 确认当前的对讲组,当被踢掉或者频道被删除的时候,要进入上一次或者默认频道
      */
-    private void ensureCurrentChannel(){
-        if (currentBean == null){
-            if (lastChannelBean != null){
+    private void ensureCurrentChannel() {
+        if (currentBean == null) {
+            if (lastChannelBean != null) {
                 acceptNewChannel(lastChannelBean);
-            }else {
-                if (defaultChannelBean != null){
+            } else {
+                if (defaultChannelBean != null) {
                     acceptNewChannel(defaultChannelBean);
                 }
             }
@@ -928,7 +925,6 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     }
 
 
-
     /**
      * 用户被频道踢出,频道被删除,要去掉对应的去掉
      *
@@ -938,12 +934,12 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
         //删除列表里的
         for (TrunkChannelBean temp : datas) {
             //最后一次进入的频道被删除了
-            if (lastChannelBean != null && temp.nTrunkChannelID == lastChannelBean.nTrunkChannelID){
+            if (lastChannelBean != null && temp.nTrunkChannelID == lastChannelBean.nTrunkChannelID) {
                 lastChannelBean = null;
             }
 
             //默认频道被删除了
-            if (defaultChannelBean != null && temp.nTrunkChannelID == defaultChannelBean.nTrunkChannelID){
+            if (defaultChannelBean != null && temp.nTrunkChannelID == defaultChannelBean.nTrunkChannelID) {
                 defaultChannelBean = null;
             }
 
@@ -990,50 +986,50 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     /**
      * 把当前频道设置为空闲
      */
-    private void setTrunkChannelIdle(){
+    private void setTrunkChannelIdle() {
         closeReqStatus("742");
-        if (currentBean != null){
+        if (currentBean != null) {
             closePlayer(currentBean.nTrunkChannelID);
         }
     }
+
     private void closeReqStatus(String from) {
         currentSpeak = null;
         tv_msg.setText(AppUtils.getString(R.string.now_is_kongxian));
     }
 
 
-
     public void setOnMenuItemClickListener(OnMenuItemClickListener onMenuItemClickListener) {
         this.onMenuItemClickListener = onMenuItemClickListener;
     }
 
-    public void changeChannelLeft(){
-        if (datas != null && datas.size() > 0){
-            if (currentBean != null){
+    public void changeChannelLeft() {
+        if (datas != null && datas.size() > 0) {
+            if (currentBean != null) {
                 int findPos = 0;
-                for (int i = 0 ; i < datas.size() ; i++){
-                    if (datas.get(i).nTrunkChannelID == currentBean.nTrunkChannelID){
+                for (int i = 0; i < datas.size(); i++) {
+                    if (datas.get(i).nTrunkChannelID == currentBean.nTrunkChannelID) {
                         findPos = i;
                         break;
                     }
                 }
-                int newPos = findPos == 0 ? 0: findPos-1;
+                int newPos = findPos == 0 ? 0 : findPos - 1;
                 acceptNewChannel(datas.get(newPos));
             }
         }
     }
 
-    public void changeChannelRight(){
-        if (datas != null && datas.size() > 0){
-            if (currentBean != null){
+    public void changeChannelRight() {
+        if (datas != null && datas.size() > 0) {
+            if (currentBean != null) {
                 int findPos = 0;
-                for (int i = 0 ; i < datas.size() ; i++){
-                    if (datas.get(i).nTrunkChannelID == currentBean.nTrunkChannelID){
+                for (int i = 0; i < datas.size(); i++) {
+                    if (datas.get(i).nTrunkChannelID == currentBean.nTrunkChannelID) {
                         findPos = i;
                         break;
                     }
                 }
-                int newPos = findPos == datas.size()-1 ? datas.size()-1: findPos+1;
+                int newPos = findPos == datas.size() - 1 ? datas.size() - 1 : findPos + 1;
                 acceptNewChannel(datas.get(newPos));
             }
         }
@@ -1139,9 +1135,9 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     /**
      * 进入p2p模式后,改变下样式
      */
-    public void changeToP2P(){
+    public void changeToP2P() {
         ll_disconnect.setVisibility(View.GONE);
-        rl_container.setBackgroundColor(ActivityCompat.getColor(getContext(),R.color.red));
+        rl_container.setBackgroundColor(ActivityCompat.getColor(getContext(), R.color.red));
         tv_middle_p2p.setVisibility(View.VISIBLE);
         ll_middle.setVisibility(View.GONE);
     }
@@ -1149,33 +1145,42 @@ public class ActionBarLayout extends FrameLayout implements View.OnClickListener
     /**
      * 回到正常样式
      */
-    public void changeToNormal(){
+    public void changeToNormal() {
         ll_disconnect.setVisibility(View.GONE);
-        rl_container.setBackgroundColor(ActivityCompat.getColor(getContext(),R.color.colorPrimary));
+        rl_container.setBackgroundColor(ActivityCompat.getColor(getContext(), R.color.colorPrimary));
         tv_middle_p2p.setVisibility(View.GONE);
         ll_middle.setVisibility(View.VISIBLE);
     }
 
 
-    public void showConnectRetry(int remainTry){
+    public void showConnectRetry(int remainTry) {
         ll_disconnect.setVisibility(View.VISIBLE);
         String strFormat = AppUtils.getString(R.string.p2p_disconnect_info);
-        String info = String.format(strFormat,remainTry+"");
+        String info = String.format(strFormat, remainTry + "");
         tv_disconnect_info.setText(info);
 
     }
 
-    public void hideConnectRetry(){
+    public void hideConnectRetry() {
         ll_disconnect.setVisibility(View.GONE);
     }
 
+    public void changeMenu(boolean isNoCenter) {
+        if (isNoCenter) {
+            tv_right.setVisibility(INVISIBLE);
+        } else {
+            tv_right.setVisibility(VISIBLE);
+        }
+    }
 
 
-
-    public interface OnMenuItemClickListener{
+    public interface OnMenuItemClickListener {
         void onLeftMenuClick();
+
         void onContactMenuClick();
+
         void onChatMenuClick();
+
         void onEnterP2pClick();
     }
 

@@ -18,6 +18,7 @@ import java.util.TreeMap;
 
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppUtils;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.views.MediaLocalImagesLineView;
 import huaiye.com.vvs.dao.MediaFileDao;
 import ttyy.com.recyclerexts.base.EXTRecyclerAdapter;
@@ -65,7 +66,7 @@ public class MediaLocalImageFragment extends MediaLocalBaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rcv_list = (RecyclerView) view.findViewById(R.id.rcv_list);
-        rcv_list.setLayoutManager(new LinearLayoutManager(getContext()));
+        rcv_list.setLayoutManager(new SafeLinearLayoutManager(getContext()));
 
         titleDecoration = new FloatingTitleDecoration();
         titleDecoration.setTitleBackgroundColor(Color.parseColor("#efefef"));

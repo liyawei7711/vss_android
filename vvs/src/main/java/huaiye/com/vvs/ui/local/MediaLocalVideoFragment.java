@@ -29,6 +29,7 @@ import java.util.List;
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.views.CheckableLinearLayout;
 import huaiye.com.vvs.dao.MediaFileDao;
 import ttyy.com.recyclerexts.base.EXTRecyclerAdapter;
@@ -70,7 +71,7 @@ public class MediaLocalVideoFragment extends MediaLocalBaseFragment {
         pb_progress = view.findViewById(R.id.pb_progress);
         tv_progress = view.findViewById(R.id.tv_progress);
 
-        rcv_list.setLayoutManager(new LinearLayoutManager(getContext()));
+        rcv_list.setLayoutManager(new SafeLinearLayoutManager(getContext()));
 
         rcv_list.setItemAnimator(new DefaultItemAnimator() {
             @Override

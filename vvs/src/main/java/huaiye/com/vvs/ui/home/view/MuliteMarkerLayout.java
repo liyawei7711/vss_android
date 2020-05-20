@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.views.DropDownAnimator;
 import huaiye.com.vvs.common.views.pickers.itemdivider.SimpleItemDecoration;
 import huaiye.com.vvs.map.baidu.appcluster.MyCluster;
@@ -83,7 +84,7 @@ public class MuliteMarkerLayout extends FrameLayout {
                         ((MainActivity) getContext()).mpl_view.showInfo(bean);
                     }
                 }, "");
-        rv_list.setLayoutManager(new LinearLayoutManager(context));
+        rv_list.setLayoutManager(new SafeLinearLayoutManager(context));
         rv_list.setAdapter(adapter);
         rv_list.addItemDecoration(new SimpleItemDecoration(context, ActivityCompat.getColor(context,R.color.divider_cccccc),1));
 

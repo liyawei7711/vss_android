@@ -153,7 +153,17 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
                     android:text="@string/niming_ruhui"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
+                <TextView
+                    android:id="@+id/btn_wuzhongxin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="@string/wuzhongxin"
+                    android:textColor="@color/white"
+                    android:visibility="visible" />
 
             </FrameLayout>
 

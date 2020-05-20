@@ -28,6 +28,7 @@ import java.util.UUID;
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.dao.AppDatas;
 import huaiye.com.vvs.dao.auth.AppAuth;
 import huaiye.com.vvs.dao.msgs.VssMessageBean;
@@ -78,7 +79,7 @@ public class ChatActivity extends AppBaseActivity implements IChatView {
     @BindExtra
     boolean isGroup;
 
-    private LinearLayoutManager layoutManager;
+    private SafeLinearLayoutManager layoutManager;
     private InputMethodManager imm;
     private int mIndex;
     private boolean move;
@@ -113,7 +114,7 @@ public class ChatActivity extends AppBaseActivity implements IChatView {
 
         present = new ChatPresent(this, sessionID);
         present.startListener();
-        message_list.setLayoutManager(layoutManager = new LinearLayoutManager(this));
+        message_list.setLayoutManager(layoutManager = new SafeLinearLayoutManager(this));
         message_list.setAdapter(present.getAdapter());
 
         message_list.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -214,7 +215,7 @@ public class ChatActivity extends AppBaseActivity implements IChatView {
     @Override
     public void moveToPosition(int position) {
         mIndex = position;
-        layoutManager = (LinearLayoutManager) message_list.getLayoutManager();
+        layoutManager = (SafeLinearLayoutManager) message_list.getLayoutManager();
         //先从RecyclerView的LayoutManager中获取第一项和最后一项的Position
         int firstItem = layoutManager.findFirstVisibleItemPosition();
         int lastItem = layoutManager.findLastVisibleItemPosition();

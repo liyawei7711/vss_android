@@ -221,6 +221,7 @@
     <string name="is_loading">正在登录</string>
     <string name="is_loading_file">正在加载</string>
     <string name="count_pwd_empty">账户或密码不能为空</string>
+    <string name="count_empty">账户不能为空</string>
     <string name="double_click_exit">再按一次退出应用程序</string>
     <string name="new_setting">联网设置</string>
     <string name="save_change">保存</string>
@@ -407,9 +408,10 @@
     <string name="yue">月</string>
     <string name="ri">日</string>
     <string name="erweima_code">扫描二维码获取终端版本</string>
-    <string name="version_quan">南京怀业版权所有©2018</string>
+    <string name="version_quan">版权所有©2018-2020</string>
     <string name="sett_server">设置</string>
     <string name="niming_ruhui">匿名入会</string>
+    <string name="wuzhongxin">无中心直通登录</string>
     <string name="old_pwd_txt">原密码</string>
     <string name="new_pwd_txt">新密码</string>
     <string name="marksure_pwd">确认密码</string>
@@ -422,6 +424,7 @@
     <string name="group_txt_content">群组</string>
     <string name="content_txt_content">内容</string>
     <string name="tongxunlu">通讯录</string>
+    <string name="no_center_device">无中心设备</string>
     <string name="offline_map_txt">离线地图下载</string>
     <string name="call_record">通话记录</string>
     <string name="local_video_txt">本地录像</string>
@@ -527,6 +530,7 @@
     <string name="login_error_txt">密码错误</string>
     <string name="now_is_talk">当前正在语音调度</string>
     <string name="now_is_capture">当前正在采集</string>
+    <string name="now_is_busy">当前正忙</string>
     <string name="now_is_play">当前正在播放</string>
     <string name="now_is_meet">当前正在会议调度</string>
     <string name="now_is_video">当前正在视频调度</string>
@@ -552,10 +556,10 @@
     <string name="guanmo_capture_is_stop">观摩采集方停止采集</string>
     <!-- p2p -->
     <string name="p2p_error_init">局域网初始化失败</string>
-    <string name="p2p_title">脱网模式</string>
+    <string name="p2p_title">无中心直通模式</string>
     <string name="p2p_change_now">立即进入</string>
-    <string name="p2p_disconnect_info">无法连接服务器,尝试%s次后进入脱网模式</string>
-    <string name="p2p_is_running_and_this_function_not_support">脱网模式不支持该功能</string>
+    <string name="p2p_disconnect_info">无法连接服务器,尝试%s次后进入无中心直通模式</string>
+    <string name="p2p_is_running_and_this_function_not_support">无中心直通模式不支持该功能</string>
 
     <string name="notice_img">图片</string>
     <string name="notice_file">文件</string>

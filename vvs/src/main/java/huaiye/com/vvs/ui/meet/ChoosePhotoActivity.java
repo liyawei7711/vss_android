@@ -30,6 +30,7 @@ import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.rx.RxUtils;
 import huaiye.com.vvs.models.ModelApis;
 import huaiye.com.vvs.models.ModelCallback;
@@ -147,7 +148,7 @@ public class ChoosePhotoActivity extends AppBaseActivity {
                         adapter.notifyDataSetChanged();
                     }
                 }, null);
-        rv_data.setLayoutManager(new LinearLayoutManager(this));
+        rv_data.setLayoutManager(new SafeLinearLayoutManager(this));
         rv_data.setAdapter(adapter);
 
         loadData();

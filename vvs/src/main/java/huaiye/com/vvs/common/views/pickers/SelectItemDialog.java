@@ -18,6 +18,7 @@ import java.util.List;
 
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.common.views.pickers.adapter.ItemHolder;
 import huaiye.com.vvs.common.views.pickers.itemdivider.SimpleItemDecoration;
 
@@ -77,7 +78,7 @@ public class SelectItemDialog extends Dialog {
                 dismiss();
             }
         });
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setLayoutManager(new SafeLinearLayoutManager(getContext()));
         rv.addItemDecoration(new SimpleItemDecoration(context));
         setContentView(rootView);
         setWidthScale();

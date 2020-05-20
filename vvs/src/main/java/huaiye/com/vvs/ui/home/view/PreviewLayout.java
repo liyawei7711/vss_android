@@ -34,6 +34,7 @@ import huaiye.com.vvs.bus.CloseTalkVideoActivity;
 import huaiye.com.vvs.bus.CreateTalkAndVideo;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.dao.AppDatas;
 import huaiye.com.vvs.dao.msgs.ChangeUserBean;
 import huaiye.com.vvs.dao.msgs.ChatUtil;
@@ -141,7 +142,7 @@ public class PreviewLayout extends FrameLayout implements View.OnClickListener {
                         doDiaoduDeal(view, bean);
                     }
                 }, "");
-        rv_list.setLayoutManager(new LinearLayoutManager(context));
+        rv_list.setLayoutManager(new SafeLinearLayoutManager(context));
         rv_list.setAdapter(adapter);
 
         refresh_view.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

@@ -56,9 +56,9 @@ public class TalkVideoActivity extends AppBaseActivity {
     @BindExtra
     public String strExtParam;
     @BindExtra
-    SdpMsgFindLanCaptureDeviceRspWrap deviceWrap;
+    public SdpMsgFindLanCaptureDeviceRspWrap deviceWrap;
     @BindExtra
-    SdpMsgCommonUDPMsgWrap msgWrap;
+    public SdpMsgCommonUDPMsgWrap msgWrap;
 
     SdpMsgFindLanCaptureDeviceRsp device;
     SdpMsgCommonUDPMsg msg;
@@ -70,15 +70,15 @@ public class TalkVideoActivity extends AppBaseActivity {
 
     KickOutUIObserver mKickoutObserver;
 
-    public static void createTalk(Context context, String strToUserDomainCode, String strToUserID, String strToUserName,String strExtParam, SdpMsgFindLanCaptureDeviceRsp device) {
+    public static void createTalk(Context context, String strToUserDomainCode, String strToUserID, String strToUserName, String strExtParam, SdpMsgFindLanCaptureDeviceRsp device) {
         Intent intent = new Intent(context, TalkVideoActivity.class);
         intent.putExtra("isCreate", true);
         intent.putExtra("strToUserDomainCode", strToUserDomainCode);
         intent.putExtra("strToUserID", strToUserID);
         intent.putExtra("strToUserName", strToUserName);
-        intent.putExtra("strExtParam",strExtParam);
-        if (device != null){
-            intent.putExtra("deviceWrap", new SdpMsgFindLanCaptureDeviceRspWrap(device) );
+        intent.putExtra("strExtParam", strExtParam);
+        if (device != null) {
+            intent.putExtra("deviceWrap", new SdpMsgFindLanCaptureDeviceRspWrap(device));
         }
         context.startActivity(intent);
         activityShow = true;
@@ -89,7 +89,7 @@ public class TalkVideoActivity extends AppBaseActivity {
         intent.putExtra("isCreate", false);
         intent.putExtra("strTalkbackDomainCode", strTalkbackDomainCode);
         intent.putExtra("nTalkbackID", nTalkbackID);
-        if (msg != null){
+        if (msg != null) {
             intent.putExtra("msgWrap", new SdpMsgCommonUDPMsgWrap(msg));
         }
         context.startActivity(intent);
@@ -105,18 +105,18 @@ public class TalkVideoActivity extends AppBaseActivity {
 
     @Override
     public void doInitDelay() {
-        if (deviceWrap != null){
+        if (deviceWrap != null) {
             device = deviceWrap.convert();
         }
 
-        if (msgWrap != null){
+        if (msgWrap != null) {
             msg = msgWrap.convert();
         }
         mKickoutObserver = new KickOutUIObserver();
         mKickoutObserver.start(new KickOutHandler() {
             @Override
             public void onKickOut() {
-                if (!AppUtils.isVideoViewNull()){
+                if (!AppUtils.isVideoViewNull()) {
                     AppUtils.getTvvl_view(getSelf()).createError("talkVideoActivity kick out");
                 }
             }
@@ -148,7 +148,7 @@ public class TalkVideoActivity extends AppBaseActivity {
                 toUser.strToUserDomainCode = strToUserDomainCode;
                 toUser.strToUserID = strToUserID;
                 toUser.strToUserName = strToUserName;
-                AppUtils.getTvvl_view(this).createTalk(toUser,strExtParam, device);
+                AppUtils.getTvvl_view(this).createTalk(toUser, strExtParam, device);
             } else {
                 AppUtils.getTvvl_view(this).joinTalk(strTalkbackDomainCode, nTalkbackID, msg);
             }
@@ -205,7 +205,7 @@ public class TalkVideoActivity extends AppBaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (!AppUtils.isVideoViewNull()){
+        if (!AppUtils.isVideoViewNull()) {
             AppUtils.getTvvl_view(this).onPause();
         }
     }
@@ -223,9 +223,15 @@ public class TalkVideoActivity extends AppBaseActivity {
         super.onDestroy();
         activityShow = false;
         mKickoutObserver.stop();
-        if (!AppUtils.isVideoViewNull()){
+        if (!AppUtils.isVideoViewNull()) {
             AppUtils.getTvvl_view(TalkVideoActivity.this).removeActivity();
             fl_root.removeView(AppUtils.getTvvl_view(TalkVideoActivity.this));
         }
+
+        if (HYClient.getSdkSamples().P2P().isBeingWatched() ||
+                HYClient.getSdkSamples().P2P().isTalking()) {
+            HYClient.getSdkSamples().P2P().stopAll();
+        }
+
     }
 }

@@ -30,6 +30,7 @@ import huaiye.com.vvs.R;
 import huaiye.com.vvs.bus.CreateTalkAndVideo;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.dao.AppDatas;
 import huaiye.com.vvs.models.contacts.bean.PersonModelBean;
 import huaiye.com.vvs.ui.home.holder.SosHolder;
@@ -66,7 +67,7 @@ public class SosDialog extends BottomSheetDialogFragment {
                 }, null);
 
         rv = view.findViewById(R.id.rv);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setLayoutManager(new SafeLinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
         return view;
     }

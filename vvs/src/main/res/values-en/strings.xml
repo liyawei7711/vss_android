@@ -221,6 +221,7 @@ please enter the correct port number and the correct port number</string>
     <string name="is_loading"> is logging in </string>
     <string name="is_loading_file"> is loading </string>
     <string name="count_pwd_empty"> account or password cannot be empty </string>
+    <string name="count_empty"> account cannot be empty </string>
     <string name="double_click_exit"> press again to exit the application </string>
     <string name="new_setting"> networking settings </string>
     <string name="save_change"> save </string>
@@ -406,9 +407,10 @@ please enter the correct port number and the correct port number</string>
     <string name="yue">month</string>
     <string name="ri">day</string>
     <string name="erweima_code"> scan the qr code to get the terminal version </string>
-    <string name="version_quan"> nanjing arms industry all copyright © 2018 </string>
+    <string name="version_quan"> industry all copyright © 2018 - 2020 </string>
     <string name="sett_server"> setting</string>
     <string name="niming_ruhui"> anonymous entry </string>
+    <string name="wuzhongxin">No central direct login</string>
     <string name="old_pwd_txt">old password</string>
     <string name="new_pwd_txt">new password</string>
     <string name="marksure_pwd"> confirm password </string>
@@ -421,6 +423,7 @@ please enter the correct port number and the correct port number</string>
     <string name="group_txt_content">group</string>
     <string name="content_txt_content">string</string>
     <string name="tongxunlu"> address book </string>
+    <string name="no_center_device">No Center Devices</string>
     <string name="offline_map_txt"> offline map download </string>
     <string name="call_record">call record</string>
     <string name="local_video_txt"> local video </string>
@@ -527,6 +530,7 @@ please enter the correct port number and the correct port number</string>
 
     <string name="now_is_talk">you are talking</string>
     <string name="now_is_capture">you are capturing</string>
+    <string name="now_is_busy">you are busy</string>
     <string name="now_is_play">you are playing</string>
     <string name="now_is_meet">you are meeting</string>
     <string name="now_is_video">you are in video</string>
@@ -560,10 +564,10 @@ please enter the correct port number and the correct port number</string>
     <string name="guanmo_capture_is_stop">watcher capture is stop</string>
 
     <string name="p2p_error_init">lan init faile</string>
-    <string name="p2p_title">offline mode</string>
+    <string name="p2p_title">No center through mode</string>
     <string name="p2p_change_now">change now</string>
-    <string name="p2p_disconnect_info">can\'t connect server,will change to offline mode after %s tries</string>
-    <string name="p2p_is_running_and_this_function_not_support">not support this function when in offline mode</string>
+    <string name="p2p_disconnect_info">can\'t connect server,will change to No center through mode after %s tries</string>
+    <string name="p2p_is_running_and_this_function_not_support">not support this function when in No center through mode</string>
 
     <string name="notice_img">image</string>
     <string name="notice_file">file</string>

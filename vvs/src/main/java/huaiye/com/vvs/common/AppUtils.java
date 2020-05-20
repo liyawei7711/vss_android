@@ -950,17 +950,15 @@ public final class AppUtils {
     public static void showMsg(boolean player, boolean capture) {
         if (isTalk) {
             showToast(getString(R.string.now_is_talk));
-        }
-        if (isVideo) {
+        } else if (isVideo) {
             showToast(getString(R.string.now_is_video));
-        }
-        if (isMeet) {
+        } else if (isMeet) {
             showToast(getString(R.string.now_is_meet));
-        }
-        if (player) {
+        } else if (player) {
             showToast(getString(R.string.now_is_play));
-        }
-        if (capture) {
+        } else if (capture) {
+            showToast(getString(R.string.now_is_capture));
+        } else {
             showToast(getString(R.string.now_is_capture));
         }
     }

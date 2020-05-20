@@ -30,6 +30,7 @@ import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.models.ModelApis;
 import huaiye.com.vvs.models.ModelCallback;
 import huaiye.com.vvs.models.auth.bean.Upload;
@@ -66,7 +67,7 @@ public class ChooseFilesActivity extends AppBaseActivity {
     LinkedHashMap<String, ArrayList<FileBean>> map = new LinkedHashMap<>();
     LinkedHashMap<String, Integer> mapIndex = new LinkedHashMap<>();
 
-    LinearLayoutManager linearLayoutManager;
+    SafeLinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -215,7 +216,7 @@ public class ChooseFilesActivity extends AppBaseActivity {
                         }
                     }
                 }, null);
-        rv_data.setLayoutManager(linearLayoutManager = new LinearLayoutManager(this));
+        rv_data.setLayoutManager(linearLayoutManager = new SafeLinearLayoutManager(this));
         rv_data.setAdapter(adapter);
 
         getFiles(rootPath, "");

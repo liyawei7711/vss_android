@@ -26,6 +26,7 @@ import huaiye.com.vvs.common.AppBaseActivity;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
 import huaiye.com.vvs.common.recycle.LiteViewHolder;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 
 @BindLayout(R.layout.activity_channel_detail)
 public class ChannelDetailActivity extends AppBaseActivity {
@@ -63,7 +64,7 @@ public class ChannelDetailActivity extends AppBaseActivity {
                 ChannelDetailItemHolder.class,
                 R.layout.item_channel_detail,
                 null, "");
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setLayoutManager(new SafeLinearLayoutManager(this));
         rv.setAdapter(adapter);
 
 

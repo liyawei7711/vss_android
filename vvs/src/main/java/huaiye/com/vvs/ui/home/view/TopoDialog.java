@@ -29,6 +29,7 @@ import huaiye.com.vvs.BuildConfig;
 import huaiye.com.vvs.R;
 import huaiye.com.vvs.common.AppUtils;
 import huaiye.com.vvs.common.recycle.LiteBaseAdapter;
+import huaiye.com.vvs.common.recycle.SafeLinearLayoutManager;
 import huaiye.com.vvs.dao.AppDatas;
 import huaiye.com.vvs.models.ModelCallback;
 import huaiye.com.vvs.models.device.TopoDeviceGPS;
@@ -214,7 +215,7 @@ public class TopoDialog extends BottomSheetDialogFragment {
 //                        toCall(bean);
                     }
                 }, null);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setLayoutManager(new SafeLinearLayoutManager(getContext()));
         rv.setAdapter(adapter);
         getTopoInfo();
         getTopoDeviceList();

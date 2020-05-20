@@ -72,6 +72,17 @@ public class ContactMenuLayout extends FrameLayout implements View.OnClickListen
         setVisibility(VISIBLE);
     }
 
+
+    public void P2PUserController() {
+        tv_phone.setVisibility(GONE);
+        tv_video.setVisibility(VISIBLE);
+        tv_meet.setVisibility(GONE);
+        tv_watch.setVisibility(VISIBLE);
+        tv_zhihui.setVisibility(GONE);
+        tv_channel.setVisibility(GONE);
+        setVisibility(VISIBLE);
+    }
+
     public void MuliteUser() {
         tv_phone.setVisibility(GONE);
         tv_video.setVisibility(GONE);

@@ -212,6 +212,10 @@ public class CaptureViewLayout extends FrameLayout implements View.OnClickListen
             }
             HYClient.getHYCapture().stopCapture(null);
             HYClient.getSdkOptions().Capture().setCaptureOfflineMode(false);
+            if(HYClient.getSdkSamples().P2P().isBeingWatched() ||
+                    HYClient.getSdkSamples().P2P().isTalking()) {
+                HYClient.getSdkSamples().P2P().stopAll();
+            }
             view_cover.setVisibility(VISIBLE);
             captureStatus = CAPTURE_STATUS_NONE;
             userId.clear();
